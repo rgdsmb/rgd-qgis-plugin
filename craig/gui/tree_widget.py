@@ -30,7 +30,7 @@ class TreeWidget(QTreeWidget):
     tree_state_text = {}
 
     """
-    The tree widget used in the DataGrandEst dock
+    The tree widget used in the plugin dock
     """
 
     def __init__(self):

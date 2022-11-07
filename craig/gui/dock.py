@@ -17,7 +17,7 @@ from craig.utils.plugin_globals import PluginGlobals
 
 class DockWidget(QDockWidget):
     """
-    The dock widget containing the tree view displaying the DataGrandEst resources
+    The dock widget containing the tree view displaying the resources
     """
 
     def __init__(self, parent=None):

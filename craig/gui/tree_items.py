@@ -44,7 +44,7 @@ def contains_unexpanded_subitems(item):
 
 class TreeWidgetItem(QTreeWidgetItem):
     """
-    An item of the DataGrandEst tree view
+    An item of the widget tree view
     """
 
     def __init__(self, parent, item_data=None):
