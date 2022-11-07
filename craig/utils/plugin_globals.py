@@ -13,10 +13,9 @@ class PluginGlobals:
     plugin_path = None
 
     # Plugin infos
-    PLUGIN_TAG = u"DataGrandEst"
-    # PLUGIN_TAG = u"indigeo"
-    PLUGIN_VERSION = u"2.01"
-    PLUGIN_SOURCE_REPOSITORY = u"https://github.com/geograndest/qgis-plugin"
+    PLUGIN_TAG = u"CRAIG"
+    PLUGIN_VERSION = u"0.1"
+    PLUGIN_SOURCE_REPOSITORY = u"https://github.com/gipcraig/qgis-plugin"
 
     # Tree nodes types
     NODE_TYPE_FOLDER = "folder"
@@ -33,7 +32,7 @@ class PluginGlobals:
 
     # Images dir
     IMAGES_DIR_NAME = "images"
-    LOGO_FILE_NAME = "datagrandest.png"
+    LOGO_FILE_NAME = "craig.png"
 
     ICON_WARN_FILE_NAME = "Icon_Simple_Warn.png"
     ICON_WMS_LAYER_FILE_NAME = "mIconWms.svg"
@@ -46,7 +45,7 @@ class PluginGlobals:
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
     CONFIG_FILE_URLS = [
-        "https://www.datagrandest.fr/tools/plugin-qgis-datagrandest/config.json"
+        "https://wms.craig.fr/qgis-plugin-config.json"
     ]
 
     # Hide resources with status = warn
