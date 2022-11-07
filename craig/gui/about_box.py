@@ -29,7 +29,7 @@ class AboutBox(QDialog):
         self.logo.setPixmap(QPixmap(logo_file_path))
         mainLayout.addWidget(self.logo)
 
-        title = u"À propos de l'extension CRAIG…"
+        title = u"À propos de l'extension " + PluginGlobals.instance().PLUGIN_TAG + "…"
         description1 = """Extension pour QGIS donnant un accès simplifié aux ressources géographiques du <a href="https://www.craig.fr/">CRAIG</a> Version {}<br>""".format(
             PluginGlobals.instance().PLUGIN_VERSION
         )

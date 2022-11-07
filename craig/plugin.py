@@ -74,7 +74,7 @@ class SimpleAccessPlugin:
         Creates the plugin main menu
         """
         plugin_menu = self.iface.pluginMenu()
-        self.plugin_menu = QMenu(u"DataGrandEst", plugin_menu)
+        self.plugin_menu = QMenu(PluginGlobals.instance().PLUGIN_TAG, plugin_menu)
         plugin_menu.addMenu(self.plugin_menu)
 
         show_panel_action = QAction(

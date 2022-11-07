@@ -74,8 +74,8 @@ class TreeWidget(QTreeWidget):
         if resources_tree is None:
             QgsMessageLog.logMessage(
                 u"Faute de fichier de configuration valide, aucune ressource ne peut être chargée "
-                u"dans le panneau de l'extension DataGrandEst.",
-                tag=u"DataGrandEst",
+                u"dans le panneau de l'extension " + PluginGlobals.instance().PLUGIN_TAG + ".",
+                tag=PluginGlobals.instance().PLUGIN_TAG,
                 level=Qgis.Warning,
             )
         elif resources_tree.children is not None and len(resources_tree.children) > 0:

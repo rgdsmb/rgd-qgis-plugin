@@ -13,6 +13,7 @@ from qgis.utils import iface
 
 from craig.gui.tree_widget import TreeWidget
 
+from craig.utils.plugin_globals import PluginGlobals
 
 class DockWidget(QDockWidget):
     """
@@ -27,7 +28,7 @@ class DockWidget(QDockWidget):
 
     def init_gui(self):
         """ """
-        self.setWindowTitle(u"DataGrandEst")
+        self.setWindowTitle(PluginGlobals.instance().PLUGIN_TAG)
         self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
 
         # Search bar.

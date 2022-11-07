@@ -123,7 +123,7 @@ class ParamBox(QDialog):
         )
 
         # Dialog box title, layout, size and display
-        title = u"Paramétrage de l'extension DataGrandEst…"
+        title = u"Paramétrage de l'extension " + PluginGlobals.instance().PLUGIN_TAG + "…"
         self.setWindowTitle(title)
         dlg_layout.addWidget(self.button_box)
         self.setLayout(dlg_layout)
