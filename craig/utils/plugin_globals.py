@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from datagrandest.utils.singleton import Singleton
+from craig.utils.singleton import Singleton
 from qgis.PyQt.QtCore import QSettings
 
 

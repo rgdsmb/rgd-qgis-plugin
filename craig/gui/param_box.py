@@ -13,9 +13,9 @@ from qgis.PyQt.QtCore import Qt
 from qgis.core import *
 from qgis.gui import *
 
-from datagrandest.utils.plugin_globals import PluginGlobals
-from datagrandest.nodes.tree_node_factory import TreeNodeFactory
-from datagrandest.nodes.tree_node_factory import download_tree_config_file
+from craig.utils.plugin_globals import PluginGlobals
+from craig.nodes.tree_node_factory import TreeNodeFactory
+from craig.nodes.tree_node_factory import download_tree_config_file
 
 
 class ParamBox(QDialog):
