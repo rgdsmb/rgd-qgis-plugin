@@ -45,7 +45,7 @@ class PluginGlobals:
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
     CONFIG_FILE_URLS = [
-        "https://wms.craig.fr/qgis-plugin-config.json"
+        "https://wms.craig.fr/qgis-plugin-config/config.json"
     ]
 
     # Hide resources with status = warn
