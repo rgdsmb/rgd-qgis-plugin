@@ -53,5 +53,5 @@ class AboutBox(QDialog):
 
         self.setLayout(mainLayout)
 
-        self.setFixedSize(600, 300)
+        self.setFixedSize(600, 320)
         self.setWindowTitle(title)
