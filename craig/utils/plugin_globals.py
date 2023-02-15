@@ -41,7 +41,7 @@ class PluginGlobals:
     ICON_RASTER_LAYER_FILE_NAME = "mIconRaster.svg"
 
     # Config files dir
-    CONFIG_FILES_DOWNLOAD_AT_STARTUP = False
+    CONFIG_FILES_DOWNLOAD_AT_STARTUP = True
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
     CONFIG_FILE_URLS = [
