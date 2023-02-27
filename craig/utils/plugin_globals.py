@@ -156,7 +156,7 @@ class PluginGlobals:
         s.setValue(u"{0}/config_file_names".format(self.PLUGIN_TAG), ["config.json"])
         s.setValue(
             u"{0}/config_file_urls".format(self.PLUGIN_TAG),
-            ["https://www.datagrandest.fr/tools/plugin-qgis-datagrandest/config.json"],
+            ["https://wms.craig.fr/qgis-plugin-config/config.json"],
         )
 
     def get_qgis_setting_default_value(self, setting):
