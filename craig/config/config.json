@@ -1,35 +1,2029 @@
-{
-  "title": "CRAIG - version 0 de Novembre 2022",
+{ "title": "CRAIG - version 0.20230227 de Février 2023",
   "description": "",
   "type": "folder",
   "children": [
-    {
-      "title": "Orthophotographie",
-      "description": "Photos aériennes de différents millésimes et résolutions sur la région",
-      "type": "folder",
-      "children": [
-        {
-          "ident": "fea15bfe-dd43-4981-a0f6-1aa324d3d492",
-          "title": "Orthophotographie la plus récente (20cm)",
-          "description": "Assemblage des prises de vue les plus récentes sur la région",
-          "type": "wms_layer",
-          "metadata_url": "https://ids.craig.fr/geocat/srv/eng/catalog.search#/metadata/f3e8d3c6-0293-4372-a385-87b1cb56eb5c",
-          "params": {
-            "url": "https://tiles.craig.fr/ortho/service",
-            "name": "ortho",
-            "format": "image/jpeg",
-            "srs": "epsg:2154"
-          },
-          "bounding_boxes": [
-            [
-              625000.0,
-              6335000.0,
-              1028000.0,
-              6635000.0
-            ]
-          ]
-        }
-      ]
-    }
-  ]
+			{
+			"title": "Orthophotographies",
+			"description": "Orthophotographies de différents millésimes et résolutions sur la région AURA",
+			"type": "folder",
+			"children": [
+				{
+				"title": "Orthos départementales",
+				"description": "Orthophotographies départementales par année",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Orthophotographie sur la région AURA",
+					"description": "Orthophotographie à 20 cm de résolution, datant de: 2022 (03, 42, 43, 63), 2021 (01, 38), 2020 (07, 15, 26, 69, 74), 2019 (73)",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/97f91b3a-996f-4cd4-a94c-c3001cca8bc4",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626129.0,
+								6338307.0,
+								1027318.0,
+								6633766.0
+							]
+						]
+					},
+					{
+					"title": "Ortho 2022 (03, 42, 43, 63)",
+					"description": "Orthophotographie à 20cm de résolution (Allier/Loire/Haute-Loire/Puy-de-Dôme) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2022",
+						"srs": "epsg:2154"
+						},
+						"bounding_boxes": [
+							[
+								640000,
+								6405000,
+								840000,
+								6635000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2021 (01, 38)",
+					"description": "Orthophotographie à 20cm de résolution (Ain/Isère) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2021",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								625000,
+								6335000,
+								1028000,
+								6635000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2020 (07, 15, 26, 69, 74)",
+					"description": "Orthophotographie à 20cm de résolution (Ardèche/Cantal/Drôme/Rhône/Haute-Savoie) - CRAIG/IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2020",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								625000,
+								6335000,
+								1028000,
+								6635000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2019 (03, 42, 43, 63, 73)",
+					"description": "Orthophotographie à 20cm de résolution (Allier/Loire/Haute-Loire/Puy-de-Dôme/Savoie) - CRAIG/IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/f3e8d3c6-0293-4372-a385-87b1cb56eb5c",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2019",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								644000,
+								6405000,
+								1030000,
+								6634000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2018 (01, 38)",
+					"description": "Orthophotographie à 25cm de résolution (Ain/Isère) - CRAIG/IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2018",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								833000,
+								6402500,
+								966500,
+								6605500
+							]
+						]
+					},
+					{
+					"title": "Ortho 2017 (07, 69)",
+					"description": "Orthophotographie à 20cm de résolution (Ardèche/Rhône) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2017",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								625000,
+								6335000,
+								1028000,
+								6635000
+							]
+						]
+					},  
+					{
+					"title": "Ortho 2016 (03, 15, 26, 42, 43, 63, 73)",
+					"description": "Orthophotographie à 25cm de résolution (Auvergne/Loire), et 20cm (Drôme/Savoie) - CRAIG/IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2016",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								625000,
+								6335000,
+								1030000,
+								6635000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2015 (01, 38, 74)",
+					"description": "Orthophotographie à 20cm de résolution (Ain/Isère/Haute-Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2015",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								830000,
+								6400000,
+								1015000,
+								6605000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2014 (07, 69)",
+					"description": "Orthophotographie à 50cm de résolution (Ardèche/Rhône) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2014",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								765000,
+								6350000,
+								870000,
+								6585000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2013 (03, 15, 26, 42, 43, 63, 73)",
+					"description": "Orthophotographie à 50cm de résolution (Drôme/Loire/Savoie), 25cm (Auvergne) et 10cm (agglomérations d'Aurillac, Clermont Communauté, Moulins, Montlucon, le Puy en Velay et Vichy) - CRAIG/IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2013",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								624750,
+								6335000,
+								1030000,
+								6635750
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2012 (01, 38, 74)",
+					"description": "Orthophotographie à 50cm de résolution (Ain, Isère et la Haute-Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/servicee",
+						"format": "image/jpeg",
+						"name": "ortho_2012",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								830000,
+								6400000,
+								10150000,
+								6605000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2011 (07)",
+					"description": "Orthophotographie à 50cm de résolution (Ardèche) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2011",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								765000,
+								6350000,
+								850000,
+								6480000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2010 (15, 26, 42, 43)",
+					"description": "Orthophotographie à 30cm de résolution (Cantal/Haute-Loire), à 50cm (Drôme/Loire) et à 15cm (Agglomération du Puy-en-Velay) - CRAIG/IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2010",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								624750,
+								6335000,
+								930000,
+								6580000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2009 (01, 03, 38, 63, 73)",
+					"description": "Orthophotographie à 30cm de résolution (Allier//Puy-de-Dôme), 50cm (Ain/Isère/Savoie), 15cm (Agglomérations de l'allier) - CRAIG/IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2009",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								624750,
+								6400000,
+								1030000,
+								6635750
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2008 (03, 69, 74)",
+					"description": "Orthophotographie à 50cm de résolution (Allier/Rhône/Haute-Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2008",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								640000,
+								6485000 ,
+								1015000 ,
+								6635000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2007 (07)",
+					"description": "Orthophotographie à 50cm de résolution (Drôme/Loire/Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2007",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								765000,
+								6350000,
+								850000,
+								6480000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2006 (26, 42, 73)",
+					"description": "Orthophotographie à 50cm de résolution (Ardèche) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2006",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								750000,
+								6335000,
+								1030000,
+								6580000
+							]
+						]
+					} 
+					, 
+					{
+					"title": "Ortho 2005 (01, 15, 43)",
+					"description": "Orthophotographie à 50cm de résolution (Ain/Cantal/Haute-Loire) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2005",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								625000,
+								6385000,
+								945000,
+								6610000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2004 (63, 74)",
+					"description": "Orthophotographie à 50cm de résolution (Puy-de-Dôme/Haute-Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2004",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								650000,
+								6460000,
+								1015000,
+								6600000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2003 (38, 69)",
+					"description": "Orthophotographie à 50cm de résolution (Isère/Rhône) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2003",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								790000,
+								6400000,
+								970000,
+								6585000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2002 (03, 07)",
+					"description": "Orthophotographie à 50cm de résolution (Allier/Ardèche) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2002",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								640000,
+								6350000,
+								855000,
+								6640000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2001 (26, 42, 73)",
+					"description": "Orthophotographie à 50cm de résolution (Drôme/Loire/Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2001",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								750000,
+								6335000,
+								1030000,
+								6580000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 2000 (01, 15, 43, 74)",
+					"description": "Orthophotographie à 50cm de résolution (Ain/Cantal/Haute-Loire/Haute-Savoie) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_2000",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								625000,
+								6385000,
+								1015000,
+								6610000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 1999 (63, 69)",
+					"description": "Orthophotographie à 50cm de résolution (Puy-de-Dôme/Rhône) - IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_1999",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								650000,
+								6460000,
+								870000,
+								6785000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 1998 (38)",
+					"description": "Orthophotographie à 50cm de résolution (Isère) - IGN/CD38",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_1998",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								830000,
+								6400000,
+								970000,
+								6540000
+							]
+						]
+					}, 
+					{
+					"title": "Ortho 1993 (38)",
+					"description": "Orthophotographie à 60cm de résolution (Isère) - IGN/CD38",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_1993",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								836050,
+								6403250,
+								965400,
+								6534500
+							]
+						]
+					} 
+					]
+				},
+				{
+				"title": "Orthos départementales historiques",
+				"description": "Orthophotographies départementales historiques",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Ortho Historique IGN (1948 à 1954)",
+					"description": "Collection de mosaïques numériques d'anciennes orthophotographies panchromatiques (niveaux de gris) rectifiées dans la projection adaptée au territoire couvert",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/fdc0902b-a92c-47c2-8f16-3b0fdd3ca6f2",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ortho/service",
+						"format": "image/jpeg",
+						"name": "ortho_histo",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626129.0,
+								6338307.0,
+								1027318.0,
+								6633766.0
+							]
+						]
+					} 
+					]
+				},
+				{
+				"title": "Orthos emprises spécifiques",
+				"description": "Orthophotographies sur des zonages spécifiques (communauté de communes, SCOT...)",
+				"type": "folder",
+				"children":[
+					{   "title": "Clermont Communauté 2007",
+						"description": "Orthophotographie à 16cm de résolution sur Clermont Communauté",
+						"metadata_url": "",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/ortho",
+							"format": "image/jpeg",
+							"name": "clermontco_2007",
+							"srs": "EPSG:2154"
+							},
+							"bounding_boxes": [
+								[
+									5163900.0,
+									1695200.0,
+									5185500.0,
+									1723200.0
+								]
+							]
+					}, 
+					{
+						"title": "Clermont Communauté 2001",
+						"description": "Orthophotographie à 16cm de résolution sur Clermont Communauté",
+						"metadata_url": "",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/ortho",
+							"format": "image/jpeg",
+							"name": "clermontco_2001",
+							"srs": "EPSG:2154"
+							},
+							"bounding_boxes": [
+								[
+									5163900.0,
+									1695200.0,
+									5185500.0,
+									1723200.0
+								]
+							]
+					}, 
+					{
+						"title": "Clermont Communauté 1996",
+						"description": "Orthophotographie à 25cm de résolution sur Clermont Communauté",
+						"metadata_url": "",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/ortho",
+							"format": "image/jpeg",
+							"name": "clermontco_1996",
+							"srs": "EPSG:2154"
+							},
+							"bounding_boxes": [
+								[
+									5163900.0,
+									1695200.0,
+									5185500.0,
+									1723200.0
+								]
+							]
+					}, 
+					{
+						"title": "Site du Puy de Dôme 2011",
+						"description": "Orthophotographie à 10cm de résolution sur le site du Puy de Dôme, Montaudoux et Colombier (projet Lidarverne)",
+						"metadata_url": "",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/ortho",
+							"format": "image/jpeg",
+							"name": "lidarverne_2011",
+							"srs": "EPSG:2154"
+							}
+					}, 
+					{
+						"title": "SCOT Rives du Rhône 2020",
+						"description": "Orthophotographie à 20cm de résolution sur le territoire du SCOT des rives du Rhône",
+						"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/6eaed2d2-ea92-4910-ab9c-a5640ce496c5",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/orthoe",
+							"format": "image/jpeg",
+							"name": "scot_rr_2020",
+							"srs": "EPSG:2154"
+							},
+							"bounding_boxes": [
+								[
+									6444000.0,
+									812000.0,
+									6504000.0,
+									869000.0
+								]
+							]
+					}, 
+					{
+						"title": "SCOT Rives du Rhône 2015",
+						"description": "Orthophotographie à 20cm de résolution sur le territoire du SCOT des rives du Rhône",
+						"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/9063e4c1-1639-4919-bcbb-d1840946d837",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/ortho",
+							"format": "image/jpeg",
+							"name": "scot_rr_2015",
+							"srs": "EPSG:2154"
+							},
+							"bounding_boxes": [
+								[
+									6444000.0,
+									812000.0,
+									6504000.0,
+									869000.0
+								]
+							]
+					}, 
+					{
+						"title": "SCOT Rives du Rhône 2009",
+						"description": "Orthophotographie couleur (RVB)sur 80 communes appartenant au Schéma de Cohérence Territoriale (SCoT) des Rives du Rhône à la résolution de 25 cm",
+						"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/b23ac1a5-c6ac-4390-a421-fdac6a72c736",
+						"type": "wms_layer",
+						"params": {
+							"url": "http://wms.craig.fr/ortho",
+							"format": "image/jpeg",
+							"name": "scot_rr_2009",
+							"srs": "EPSG:2154"
+							},
+							"bounding_boxes": [
+								[
+									6444000.0,
+									812000.0,
+									6504000.0,
+									869000.0
+								]
+							]
+					}
+					]
+				}
+				]
+			},
+			{
+			"title": "Orthophotographies RTGE",
+			"description": "",
+			"type": "folder",
+			"children": [
+				{
+				"title": "Couverture des orthophotos RTGE",
+				"description": "Etat d'avancement du Référentiel Très Grande Echelle produit par le CRAIG sur Auvergne-Rhône-Alpes, et remontée des mises à jour à effectuer",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Couverture RTGE",
+					"description": "Etat d'avancement du Référentiel Très Grande Echelle produit par le CRAIG sur Auvergne-Rhône-Alpes (déjà disponible, en cours de production ou planifié).",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/998a8feb-a71a-422d-9d57-9e94aa8eb6f7",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://ids.craig.fr/wxs/rtge/wms",
+						"format": "image/png",
+						"name": "couverture_rtge_dissolve",
+						"style": "style_couverture_rtge_dissolve",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Signalements mises à jour",
+					"description": "Couche montrant les différents signalements de travaux, entraînant par la suite une mise à jour du RTGE",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/998a8feb-a71a-422d-9d57-9e94aa8eb6f7",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://ids.craig.fr/wxs/rtge/wms",
+						"format": "image/png",
+						"name": "emprise_travaux_maj",
+						"style": "style_emprise_travaux_maj",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Orthophotographies RTGE (accès restreint)",
+				"description": "Etat d'avancement du Référentiel Très Grande Echelle produit par le CRAIG sur Auvergne-Rhône-Alpes, et remontée des mises à jour à effectuer",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Emprise des zones couvertes",
+					"description": "Emprise des zones couvertes par l'Orthophotographie",
+					"metadata_url": "",
+					"type": "wms_layer",
+						"params": {
+						"url": "https://tiles.rtge.craig.fr",
+						"format": "image/png",
+						"name": "localisation_ortho",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Orthophotographies RTGE > 1:5000",
+					"description": "Orthophotoplan RTGE < 1:5000",
+					"metadata_url": "",
+					"type": "wms_layer",
+						"params": {
+						"url": "https://tiles.rtge.craig.fr",
+						"format": "image/png",
+						"name": "ortho",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				}
+			]
+			},	
+			{
+			"title": "Fonds OpenStreetMap",
+			"description": "Fonds de carte OpenStreetMap mis en forme par DataGrandEst",
+			"metadata_url": "",
+			"type": "folder",
+			"children":[
+					{
+					"title": "OpenStreetMap - OSM style Bright",
+					"description": "Fond de plan OpenStreetMap élaboré par GéoGrandEst - OSM style Standard",
+					"metadata_url": "https://www.datagrandest.fr/geonetwork/srv/fre/catalog.search#/metadata/FR-200052264-GGE-OSM",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://osm.datagrandest.fr/mapcache",
+						"format": "image/png",
+						"name": "osm-default",
+						"srs": "EPSG:2154"
+						}
+					}, 
+					{
+					"title": "OpenStreetMap - OSM style Désaturé",
+					"description": "Fond de carte pâle OpenStreetMap mis en forme par DataGrandEst",
+					"metadata_url": "https://www.datagrandest.fr/geonetwork/srv/fre/catalog.search#/metadata/FR-200052264-GGE-OSM",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://osm.datagrandest.fr/mapcache",
+						"format": "image/png",
+						"name": "faded",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+				"title": "OpenStreetMap - OSM style Google Maps",
+				"description": "Fond de plan OpenStreetMap élaboré par GéoGrandEst - OSM style Google Maps",
+				"metadata_url": "https://www.datagrandest.fr/geonetwork/srv/fre/catalog.search#/metadata/FR-200052264-GGE-OSM",
+				"type": "wms_layer",
+				"params": {
+						"url": "https://osm.datagrandest.fr/mapcache",
+						"format": "image/png",
+						"name": "osm_google",
+						"srs": "EPSG:2154"
+						}
+				},
+				{
+				"title": "OpenStreetMap - OSM style Sans toponymes",
+				"description": "Fond de carte OpenStreetMap sans toponymes mis en forme par DataGrandEst",
+				"metadata_url": "https://www.datagrandest.fr/geonetwork/srv/fre/catalog.search#/metadata/FR-200052264-GGE-OSM",
+				"type": "wms_layer",
+				"params": {
+						"url": "https://osm.datagrandest.fr/mapcache",
+						"format": "image/png",
+						"name": "pure",
+						"srs": "EPSG:2154"
+						}
+				}
+				]
+			},
+			{
+			"title": "Cartes IGN",
+			"description": "Regroupe les produits suivants : SCAN 25, SCAN 100, SCAN Départemental, SCAN Régional, SCAN 1000 et Plan IGN",
+			"metadata_url": "",
+			"type": "folder",
+			"children":[
+					{
+					"title": "Scans",
+					"description": "Regroupe les produits suivants : SCAN 25, SCAN 100, Scan 50 historique 1950, Scan Etat major XIXe,SCAN Régional, SCAN 1000",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/8fae296c-182a-402e-83ac-a0178bdff64e",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign",
+						"format": "image/png",
+						"name": "scans_ign",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+									626129.0,
+									6338307.0,
+									1027318.0,
+									6633766.0
+							]
+						]
+					}, 
+					{
+					"title": "Scans Noir & Blanc",
+					"description": "Le produit SCAN IGN multi échelle regroupe les produits suivants, en niveaux de gris : SCAN 25, SCAN 100, SCAN Départemental, SCAN Régional, SCAN 1000",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/8fae296c-182a-402e-83ac-a0178bdff64e",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign",
+						"format": "image/png",
+						"name": "scans_grayscale",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+						[
+								626129.0,
+								6338307.0,
+								1027318.0,
+								6633766.0
+						]
+					]
+				}, 
+				{
+				"title": "Scan 50 historique 1950",
+				"description": "Couche Scan 50 historique 1950, échelle recommandée 1:20000",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/9532a6ba-a244-4740-8824-2d4450e9fc7c",
+				"type": "wms_layer",
+				"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "scan50historique",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626129.0,
+								6338307.0,
+								1027318.0,
+								6633766.0
+							]
+						]
+				},
+				{
+				"title": "Scan Etat major XIXe (<= 1:20000)",
+				"description": "Couche Scan Etat major XIXe, échelle recommandée 1:20000",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/4b1b45db-f075-4260-b61c-195c5a250553",
+				"type": "wms_layer",
+				"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "scanem40k",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626129.0,
+								6338307.0,
+								1027318.0,
+								6633766.0
+							]
+						]
+				},
+				{
+				"title": "Plan IGN",
+				"description": "Assemblage des 12 niveaux de zoom du produit Plan IGN (décembre 2021)",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/d6756eb4-daeb-4d51-a4ce-9756e474a61e",
+				"type": "wms_layer",
+				"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/jpeg",
+						"name": "planign",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626129.0,
+								6338307.0,
+								1027318.0,
+								6633766.0
+							]
+						]
+					}
+				]
+			},
+			{
+			"title": "Altimétrie",
+			"description": "Données d'altimétrie produites à partir du RGE ALTI 5m de l'IGN",
+			"type": "folder",
+			"children": [{
+					"title": "MNT RGE Alti (<= 1:100000)",
+					"description": "Assemblage MNT couleur/ombrage du RGE Altimétrique à 5m 2021 IGN <= 1:100000",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://wms.craig.fr/mnt",
+						"format":"image/png",
+						"name": "rgealti_5m_mnt",
+						"srs": "EPSG:2154"
+						}
+				},
+				{
+					"title": "Courbes de niveau RGE Alti (<=1:30000)",
+					"description": "Courbes de niveau à partir du RGE Altimétrique à 5 m 2021 IGN <=1:30000",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://wms.craig.fr/mnt",
+						"format": "image/png",
+						"name": "rgealti_5m_courbes_niveau",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+					"title": "Pente RGE Alti 0 à 90°(<= 1:100000)",
+					"description": "Pente de 0 à 90 degrés du RGE Altimétrique à 5m 2021 IGN <= 1:100000",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://wms.craig.fr/mnt",
+						"format":"image/png",
+						"name": "rgealti_5m_pente",
+						"srs": "EPSG:2154"
+						}
+				},
+				{
+					"title": "Pente RGE Alti 30° à >45° (<= 1:100000)",
+					"description": "Pente de 30 à au-dessus de 45 degrés du RGE Altimétrique à 5m 2021 IGN <= 1:100000",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://wms.craig.fr/mnt",
+						"format":"image/png",
+						"style":"Pente de 30 à au dessus de 45 degrés",
+						"name": "rgealti_5m_pente",
+						"srs": "EPSG:2154"
+						}
+				}
+				,
+				{
+					"title": "Points remarquables du relief (<= 50000)",
+					"description": "Points remarquables du relief de la BD Carto",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://wms.craig.fr/mnt",
+						"format":"image/png",
+						"name": "point_remarquable_relief",
+						"srs": "EPSG:2154"
+						}
+				} 
+				]
+			},
+			{
+			"title": "BD Topo",
+			"description": "Produite par l'IGN, la BD Topo contient une description vectorielle 3D (structurée en objets) des éléments du territoire et de ses infrastructures, de précision métrique. Les objets sont structurés en différents thèmes.",
+			"type": "folder",
+			"children": [
+				{
+				"title": "Transport",
+				"description": "Assemblage des couches du thème transport de la Bd Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Tronçons de routes (<= 1:50000)",
+					"description": "Tronçons de routes du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_troncon_de_route",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Points de repère (<= 1:50000)",
+					"description": "Points de repère du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_section_de_points_de_repere",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Routes numérotées ou nommées",
+					"description": "Routes numérotées ou nommées du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_route_numerotee_ou_nommee",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Voies nommées (<= 1:10000)",
+					"description": "Voies nommées du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_voie_nommee",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Equipement de transport (<= 1:25000)",
+					"description": "Equipement de transport du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_equipement",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Tronçons de voie ferrée (<= 1:150000)",
+					"description": "Tronçons de voie ferrée du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_troncon_de_voie_ferree",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Transport par câble",
+					"description": "Transport par câble du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_par_cable",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Voies ferrées nommées",
+					"description": "Voies ferrées nommées du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_voie_ferree_nommee",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Barrières/passages à niveaux",
+					"description": "Barrières/passages à niveaux du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_point_du_reseau",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Aérodrome",
+					"description": "Aérodromes du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_aerodrome",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Piste d'aérodrome",
+					"description": "Pistes d'aérodromes du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_piste_aerodrome",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Itinéraires autre",
+					"description": "Itinéraires autre du thème transport de la Bd Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_itineraire_autre",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Services et activités",
+				"description": "Assemblage des couches Services et activités de la Bd Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Canalisations",
+					"description": "Canalisations du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "services_et_activites_canalisations",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Postes de transformation",
+					"description": "Postes de transformation du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "services_et_activites_poste_de_transformation",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Lignes électriques",
+					"description": "Postes de transformation du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "services_et_activites_ligne_electrique",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Zones d'activités ou d'intérêt (<= 1:150000)",
+					"description": "Postes de transformation du thème transport Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "services_et_activites_zone_d_activite_ou_d_interet",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "ERP (<= 1:25000)",
+					"description": "Etablissements Recevant du Public (ERP) du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "transport_equipement",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Hydrographie",
+				"description": "Tronçons hydrographiques Services et activités de la Bd Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Tronçons hydrographiques",
+					"description": "Canalisations du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_troncon_hydrographique",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Cours d'eau",
+					"description": "Postes de transformation du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_cours_d_eau",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Noeuds hydrographiques (<= 1:25000)",
+					"description": "Postes de transformation du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_noeud_hydrographique",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Surfaces hydrographiques (<= 1:100000)",
+					"description": "Postes de transformation du thème transport Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_surface_eau",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Bassins versants (<= 1:50000)",
+					"description": "Etablissements Recevant du Public (ERP) du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_bassin_versant",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Plans d'eau (<= 1:25000)",
+					"description": "Etablissements Recevant du Public (ERP) du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_plan_d_eau",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Détail hydrographique (<= 1:25000)",
+					"description": "Etablissements Recevant du Public (ERP) du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "hydrographie_detail",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Occupation du sol (<= 1:50000)",
+				"description": "Assemblage des couches du thème occupation du sol de la BD Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Zones de végétation",
+					"description": "Canalisations du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "ocsol_zone_de_vegetation",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Haies",
+					"description": "Postes de transformation du thème Services et activités de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "ocsol_haie",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Bâti",
+				"description": "Assemblage des couches du thème occupation du sol de la BD Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Bâtiments (<= 1:25000)",
+					"description": "Bâtiments du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_batiment",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Cimetières (<= 1:50000)",
+					"description": "Cimetières du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_cimetiere",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Constructions linéaires (<= 1:50000)",
+					"description": "Constructions linéaires du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_construction_lineaire",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Constructions ponctuelles (<= 1:50000)",
+					"description": "Constructions ponctuelles du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_construction_ponctuelle",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Constructions surfaciques (<= 1:50000)",
+					"description": "Constructions surfaciques du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_construction_surfacique",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Réservoirs (<= 1:50000)",
+					"description": "Réservoirs du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_reservoir",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Terrains de sport (<= 1:50000)",
+					"description": "Terrains de sport du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_terrain_sport",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Lignes orographiques (<= 1:50000)",
+					"description": "Lignes orographiques du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_ligne_orographie",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Pylônes",
+					"description": "Pylônes du thème Bâti de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bati_pylone",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Administratif",
+				"description": "Assemblage des couches du thème administratif de la BD Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Communes",
+					"description": "Communes du thème administratif de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "administratif_commune",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Communes associées",
+					"description": "Communes associées du thème administratif de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "administratif_commune_associee",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Régions",
+					"description": "Régions du thème administratif de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "administratif_region",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Départements",
+					"description": "Départements du thème administratif de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "administratif_departement",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "EPCI",
+					"description": "EPCI du thème administratif de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "administratif_epci",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Arrondissements Municipaux",
+					"description": "Arrondissements Municipaux du thème administratif de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "administratif_arrondissement_municipal",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Lieux nommés",
+				"description": "Assemblage des couches du thème Lieux nommés de la BD Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Zones d'habitation",
+					"description": "Zones d'habitation du thème Lieux nommés de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "lieux_nommes_zone_d_habitation",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Lieux-dits non habités",
+					"description": "Lieux-dits non habités du thème Lieux nommés de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "lieux_nommes_lieu_dit_non_habite",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Détails orographiques",
+					"description": "Détails orographiques du thème Lieux nommés de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "lieux_nommes_detail_orographique",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				},
+				{
+				"title": "Zones réglementées",
+				"description": "Assemblage des couches du thème occupation du sol de la BD Topo IGN",
+				"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+				"type": "folder",
+				"children":[
+					{
+					"title": "Parcs ou réserves",
+					"description": "Parcs ou réserves du thème Zones réglementées de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "zones_reglementees_parc_ou_reserve",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "Forêts publiques",
+					"description": "Forêts publiques du thème Zones réglementées de la BD Topo IGN",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "zones_reglementees_foret_publique",
+						"srs": "EPSG:2154"
+						}
+					}
+					]
+				}
+				]
+			},
+			{
+			"title": "Occupation du sol",
+			"description": "Occupation du sol d'emprises spécifiques",
+			"type": "folder",
+			"children": [{
+					"title": "MOS du Grand Clermont 2020",
+					"description": "Base de données de l'occupation du sol (MOS Grand Clermont) 2020 pour le territoire de Clermont-Ferrand, créée à partir d'une image satellite SPOT5 à 2.5 m de résolution.",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/e7dae1e7-aadb-4f8a-bc9d-98464469cdcd",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://ids.craig.fr/wxs/public/wms",
+						"format": "image/png",
+						"name": "CRAIG_MOS_GRAND_CLERMONT_2020",
+						"srs": "EPSG:2154"
+						}
+					},
+					{
+					"title": "MOS du Grand Clermont 2011",
+					"description": "Base de données de l'occupation du sol (MOS Grand Clermont) 2011 pour le territoire de Clermont-Ferrand, créée à partir d'une image satellite SPOT5 à 2.5 m de résolution.",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/d3fc97c3-82f9-4c1f-8ccb-03200ab3139f",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://ids.craig.fr/wxs/public/wms",
+						"format": "image/png",
+						"name": "CRAIG_MOS_GRAND_CLERMONT_2011",
+						"srs": "EPSG:2154"
+						}
+					}
+				]
+			},
+			{
+			"title": "Forêts",
+			"description": "Assemblage des couches du thème occupation du sol de la BD Topo IGN",
+			"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+			"type": "folder",
+			"children":[
+					{
+					"title": "BD Forêt V1",
+					"description": "Base de données de référence pour l’espace forestier et les milieux semi-naturels V1",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/e8ac430c-07c0-48aa-a910-f19dd675677f",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bdforet_v1",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626082,
+								6338347,
+								1024759,
+								6633880
+							]
+						]
+					},
+					{
+					"title": "BD Forêt V2",
+					"description": "Base de données de référence pour l’espace forestier et les milieux semi-naturels V2",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/e8ac430c-07c0-48aa-a910-f19dd675677f",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/ign/service",
+						"format": "image/png",
+						"name": "bdforet_v2",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626082,
+								6338347,
+								1024759,
+								6633880
+							]
+						]
+					},
+					{
+					"title": "Forêts publiques ONF (externe)",
+					"description": "Localisation des forêts publiques domaniales et non domaniales (communales, sectionales, départementales et d’établissements publics) gérées par l’Office national des forêts (ONF). ",
+					"metadata_url": "http://metadata.carmencarto.fr/geonetwork/105/fre/catalog.search#/metadata/fr-662043116-7D3DC709-E1EB-470B-9FD0-8ABF8AAFD8E4",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://ws.carmencarto.fr/WMS/105/ONF_Forets",
+						"format": "image/png",
+						"name": "FOR_PUBL_FR",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626082,
+								6338347,
+								1024759,
+								6633880
+							]
+						]
+					},
+					{
+					"title": "Parcelles forestières ONF (externe)",
+					"description": "Contours des parcelles forestières publiques relevant du régime forestier : terrains domaniaux et communaux, y compris les terrains qui ne sont pas en nature de forêt. Ces contours ne doivent pas être considérés comme un référentiel mais uniquement à titre informatif.",
+					"metadata_url": "http://metadata.carmencarto.fr/geonetwork/105/fre/catalog.search#/metadata/fr-662043116-82880F0D-E1C4-4EF3-80AF-416977F118F1",
+					"type": "wms_layer",
+					"params": {
+						"url": "http://ws.carmencarto.fr/WMS/105/ONF_Forets",
+						"format": "image/png",
+						"name": "PARC_PUBL_FR",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								626082,
+								6338347,
+								1024759,
+								6633880
+							]
+						]
+					}
+					]
+			},
+			{
+			"title": "Risques naturels (externe)",
+			"description": "Plans de Prévention des Risques (PPR) sur les zones à risques naturels - Géorisques",
+			"type": "folder",
+			"children": [
+				{
+					"title": "PPR Inondation",
+					"description": "Plan de Prévention des Risques Inondation (France métropolitaine)",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://www.georisques.gouv.fr/services",
+						"format": "image/png",
+						"name": "PPRN_PERIMETRE_INOND_FXX",
+						"style": "default",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+					"title": "PPR Feu de forêt",
+					"description": "Plan de Prévention des Risques Feu de forêt (France métropolitaine)",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://www.georisques.gouv.fr/services",
+						"format":"image/png",
+						"name": "PPRN_PERIMETRE_FEU_FXX",
+						"style": "default",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								590000,
+								6300000,
+								1040000,
+								6650000
+							]
+						]
+				},
+				{
+					"title": "PPR Mouvement de terrain",
+					"description": "Plan de Prévention des Mouvement de terrain (France métropolitaine)",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://www.georisques.gouv.fr/services",
+						"format":"image/png",
+						"name": "PPRN_PERIMETRE_MVT_FXX",
+						"style": "default",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								590000,
+								6300000,
+								1040000,
+								6650000
+							]
+						]
+				}
+				]
+			},
+			{
+			"title": "Documentation cadastrale",
+			"description": "",
+			"type": "folder",
+			"children": [
+				{
+				"title": "Plan cadastral Informatisé - PCI juillet 2022 (CRAIG)",
+				"description": " Plan Cadastral Informatisé vecteur sur la région Auvergne-Rhône-Alpes (juillet 2022).",
+				"metadata_url":"https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/3bedb35a-a9ba-4f48-8796-de127becd578",
+				"type": "wms_layer",
+				"params": {
+					"url": "http://tiles.craig.fr/pci/service",
+					"format": "image/png",
+					"name": "cadastre",
+					"srs": "EPSG:2154"
+					},
+					"bounding_boxes": [
+						[
+							617260,
+							6330507,
+							1027292,
+							6640108
+						]
+					]
+				},
+				{
+				"title": "Planches cadastrales DGFIP (externe) ",
+				"description": "Plan cadastral Informatisé (PCI) de la DGFIP, mis à jour en temps réel.",
+				"metadata_url":"",
+				"type": "wms_layer",
+				"params": {
+					"url": "https://tiles.craig.fr/cadastre.gouv",
+					"format": "image/png",
+					"name": "AMORCES_CAD,CP.CadastralParcel,HYDRO,BU.Building",
+					"srs": "EPSG:2154"
+					},
+					"bounding_boxes": [
+						[
+							617260,
+							6330507,
+							1027292,
+							6640108
+						]
+					]
+				}
+				]
+			},
+			{
+			"title": "Adresse (<= 1:2000)",
+			"description": "Adresses de la Base Adresse Nationale (BAN), lieux & voies nommées de la BD Topo",
+			"type": "folder",
+			"children": [{
+					"title": "Base Adresse Nationale (BAN)",
+					"description": "Base de données ponctuelle nationale de référence des adresses du territoire français - Mise à jour de novembre 2022",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/adresse/service",
+						"format": "image/png",
+						"name": "ban_adresse",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								590000,
+								6300000,
+								1040000,
+								6650000
+							]
+						]
+				}, 
+				{
+					"title": "Voies nommées",
+					"description": "Voies nommées du thème adresse de la BDTopo IGN (mise à jour décembre 2022)",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/adresse/service",
+						"format":"image/png",
+						"name": "bdtopo_voie_nommee",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								590000,
+								6300000,
+								1040000,
+								6650000
+							]
+						]
+				}, 
+				{
+					"title": "Lieux et lieux-dits",
+					"description": "Lieux dits et quartiers du thème lieux nommés de la BDTopo IGN (mise à jour décembre 2022)",
+					"metadata_url": "https://ids.craig.fr/geocat/srv/fre/catalog.search#/metadata/2eab86c1-8114-432a-9d42-ed968bb7fb49",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/adresse/service",
+						"format":"image/png",
+						"name": "bdtopo_lieu_nomme",
+						"srs": "EPSG:2154"
+						},
+						"bounding_boxes": [
+							[
+								590000,
+								6300000,
+								1040000,
+								6650000
+							]
+						]
+				} 
+				]
+			},
+			{
+			"title": "Limites administratives",
+			"description": "Limites administratives provenant d'Admin Express COG de l'IGN",
+			"type": "folder",
+			"children": [{
+					"title": "Région AURA",
+					"description": "Limites de la région Auvergne-Rhône-Alpes basées sur Admin Express COG de l'IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/administratif/service",
+						"format": "image/png",
+						"name": "region",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+					"title": "Départements",
+					"description": "Limites des départements basées sur Admin Express COG de l'IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/administratif/service",
+						"format":"image/png",
+						"name": "departement",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+					"title": "EPCI",
+					"description": "Limites des EPCI à fiscalité propre basées sur Admin Express COG  de l'IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/administratif/service",
+						"format":"image/png",
+						"name": "epci",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+					"title": "Communes",
+					"description": "Limites des communes basées sur Admin Express COG de l'IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/administratif/service",
+						"format":"image/png",
+						"name": "commune",
+						"srs": "EPSG:2154"
+						}
+				}, 
+				{
+					"title": "Chefs-lieux communes",
+					"description": "Chefs-lieux des communes basés sur Admin Express COG de l'IGN",
+					"metadata_url": "",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://tiles.craig.fr/administratif/service",
+						"format":"image/png",
+						"name": "chef_lieu_commune",
+						"srs": "EPSG:2154"
+						}
+				} 
+			]
+		},
+		{
+			"title": "Documents d'urbanisme (externe)",
+			"description": "Documents d'urbanisme du Géoportail de l'Urbanisme (GPU)",
+			"type": "folder",
+			"children": [{
+					"title": "Documents d'urbanisme (PLU, POS, CC)",
+					"description": "Documents d'urbanisme les Plans Locaux d'Urbanisme (PLU), les Plans d'Occupation des Sols (POS) et les Cartes Communales (CC)",
+					"metadata_url": "http://wxs-gpu.mongeoportail.ign.fr/externe/39wtxmgtn23okfbbs1al2lz3/wfs?request=GetCapabilities",
+					"type": "wms_layer",
+					"params": {
+						"url": "https://wxs-gpu.mongeoportail.ign.fr/externe/vkd1evhid6jdj5h4hkhyzjto/wms/v",
+						"format": "image/png",
+						"name": "du",
+						"srs": "EPSG:4326"
+						}
+					}
+				]
+			}
+	]
 }
