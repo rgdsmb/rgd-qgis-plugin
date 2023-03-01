@@ -291,7 +291,7 @@ class TreeWidget(QTreeWidget):
             sourceCrs = QgsCoordinateReferenceSystem(
                 QgsProject.instance().crs().authid()
             )
-            destCrs = QgsCoordinateReferenceSystem(2154)
+            destCrs = QgsCoordinateReferenceSystem.fromEpsgId(2154)
             tr = QgsCoordinateTransform(sourceCrs, destCrs, QgsProject.instance())
             map_extent_epsg2154 = tr.transformBoundingBox(map_extent)
             # turns bbox into a list [xmin, xmax, ymin, ymax]
