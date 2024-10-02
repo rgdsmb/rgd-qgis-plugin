@@ -16,8 +16,8 @@ from qgis.core import (
 )
 from qgis.utils import iface
 
-from craig.gui.tree_items import TreeWidgetItem
-from craig.utils.plugin_globals import PluginGlobals
+from rgd.gui.tree_items import TreeWidgetItem
+from rgd.utils.plugin_globals import PluginGlobals
 
 
 class TreeWidget(QTreeWidget):

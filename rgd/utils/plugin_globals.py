@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import copy
 import os
-from craig.utils.singleton import Singleton
+from rgd.utils.singleton import Singleton
 from qgis.PyQt.QtCore import QSettings
 
 
@@ -13,9 +14,9 @@ class PluginGlobals:
     plugin_path = None
 
     # Plugin infos
-    PLUGIN_TAG = u"CRAIG"
+    PLUGIN_TAG = u"RGD"
     PLUGIN_VERSION = u"0.1"
-    PLUGIN_SOURCE_REPOSITORY = u"https://github.com/gipcraig/qgis-plugin"
+    PLUGIN_SOURCE_REPOSITORY = u"https://github.com/rgdsmb/rgd-qgis-plugin"
 
     # Tree nodes types
     NODE_TYPE_FOLDER = "folder"
@@ -32,7 +33,7 @@ class PluginGlobals:
 
     # Images dir
     IMAGES_DIR_NAME = "images"
-    LOGO_FILE_NAME = "craig.png"
+    LOGO_FILE_NAME = "rgd.png"
 
     ICON_WARN_FILE_NAME = "Icon_Simple_Warn.png"
     ICON_WMS_LAYER_FILE_NAME = "mIconWms.svg"
@@ -44,15 +45,21 @@ class PluginGlobals:
     CONFIG_FILES_DOWNLOAD_AT_STARTUP = True
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
-    CONFIG_FILE_URLS = [
-        "https://wms.craig.fr/qgis-plugin-config/config.json"
+    CONFIG_FILE_URLS_FACTORY = [
+        "https://raw.githubusercontent.com/rgdsmb/rgd-qgis-plugin/refs/heads/master/rgd/config/config.json"
     ]
+    CONFIG_FILE_URLS = copy.deepcopy(CONFIG_FILE_URLS_FACTORY)
 
     # Hide resources with status = warn
     HIDE_RESOURCES_WITH_WARN_STATUS = True
 
     # Hide empty group in the resources tree
     HIDE_EMPTY_GROUPS = True
+
+    # Authentication configuration identifier
+    AUTH_CONFIG_ID = None
+
+    LOCALISATION_CADASTRALE_URL = "https://majicad.rgd74.fr/qgis/index.phtml"
 
     def __init__(self):
         """ """
@@ -63,6 +70,7 @@ class PluginGlobals:
             "CONFIG_FILE_URLS": self.CONFIG_FILE_URLS,
             "HIDE_RESOURCES_WITH_WARN_STATUS": self.HIDE_RESOURCES_WITH_WARN_STATUS,
             "HIDE_EMPTY_GROUPS": self.HIDE_EMPTY_GROUPS,
+            "AUTH_CONFIG_ID": self.AUTH_CONFIG_ID,
         }
 
         self.config_dir_path = None
@@ -110,7 +118,11 @@ class PluginGlobals:
         )
 
         self.CONFIG_FILE_URLS = s.value(
-            u"{0}/config_file_urls".format(self.PLUGIN_TAG), self.CONFIG_FILE_URLS
+            u"{0}/config_file_urls".format(self.PLUGIN_TAG), self.CONFIG_FILE_URLS if self.CONFIG_FILE_URLS else ""
+        )
+
+        self.AUTH_CONFIG_ID = s.value(
+            u"{0}/auth_config_id".format(self.PLUGIN_TAG), self.AUTH_CONFIG_ID
         )
 
         # False by default so that parameter is checked the 1st time user opens plugin, else invert
@@ -156,8 +168,9 @@ class PluginGlobals:
         s.setValue(u"{0}/config_file_names".format(self.PLUGIN_TAG), ["config.json"])
         s.setValue(
             u"{0}/config_file_urls".format(self.PLUGIN_TAG),
-            ["https://wms.craig.fr/qgis-plugin-config/config.json"],
+            self.CONFIG_FILE_URLS_FACTORY,
         )
+        s.setValue(u"{0}/auth_config_id".format(self.PLUGIN_TAG), None)
 
     def get_qgis_setting_default_value(self, setting):
         """ """

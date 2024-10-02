@@ -11,9 +11,9 @@ from qgis.PyQt.QtWidgets import (
 )
 from qgis.utils import iface
 
-from craig.gui.tree_widget import TreeWidget
+from rgd.gui.tree_widget import TreeWidget
 
-from craig.utils.plugin_globals import PluginGlobals
+from rgd.utils.plugin_globals import PluginGlobals
 
 class DockWidget(QDockWidget):
     """
@@ -23,7 +23,7 @@ class DockWidget(QDockWidget):
     def __init__(self, parent=None):
         """ """
         super(DockWidget, self).__init__()
-        objectName = "SimpleAccessDock"
+        self.setObjectName("RGDDockWidget")
         self.init_gui()
 
     def init_gui(self):

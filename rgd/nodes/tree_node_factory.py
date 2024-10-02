@@ -13,7 +13,7 @@ from qgis.PyQt.QtNetwork import QNetworkRequest, QNetworkReply
 from qgis.PyQt.QtCore import QUrl
 
 
-from craig.utils.plugin_globals import PluginGlobals
+from rgd.utils.plugin_globals import PluginGlobals
 from .nodes import (
     WmsLayerTreeNode,
     WmsStyleLayerTreeNode,
@@ -125,6 +125,7 @@ class TreeNodeFactory:
         node_ident = tree_config.get("ident", None)
         node_params = tree_config.get("params", None)
         node_bounding_boxes = tree_config.get("bounding_boxes", None)
+        requires_auth = tree_config.get("requires_auth", False)
 
         if node_title:
             # Creation of the node
@@ -138,6 +139,7 @@ class TreeNodeFactory:
                     node_ident,
                     node_params,
                     node_bounding_boxes,
+                    requires_auth,
                     parent_node,
                 )
 
@@ -151,6 +153,7 @@ class TreeNodeFactory:
                     node_ident,
                     node_params,
                     node_bounding_boxes,
+                    requires_auth,
                     parent_node,
                 )
 
@@ -164,6 +167,7 @@ class TreeNodeFactory:
                     node_ident,
                     node_params,
                     node_bounding_boxes,
+                    requires_auth,
                     parent_node,
                 )
 
@@ -177,6 +181,7 @@ class TreeNodeFactory:
                     node_ident,
                     node_params,
                     node_bounding_boxes,
+                    requires_auth,
                     parent_node,
                 )
 

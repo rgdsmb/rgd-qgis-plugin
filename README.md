@@ -1,20 +1,20 @@
 # qgis-plugin
-Plugin pour QGIS 3 fournissant un accès simple aux flux de donnéesgéographiques
-WMS/WMTS et WFS du CRAIG et d'autres ressources géographiques utiles en région
-Auvergne Rhône-Alpes.
+Plugin pour QGIS fournissant un accès simple aux flux de donnéesgéographiques
+WMS/WMTS et WFS du RGD et d'autres ressources géographiques utiles en Savoie et
+Haute-Savoie
 
-Code source du projet : https://github.com/gipcraig/qgis-plugin
+Code source du projet: https://github.com/rgdsmb/rgd-qgis-plugin
 
-Ce projet est un fork (projet dérivé) du plugin de DataGrandEst (lui-même fork d'autres projets..):
-* https://github.com/geograndest/qgis-plugin
+Ce projet est un fork (projet dérivé) du plugin du CRAIG (lui-même fork d'autres projets..):
+* https://github.com/gipcraig/qgis-plugin
 
 ## Utilisation
 
 Affichage des ressources mises à disposition des utilisateurs via l'extension :
-* Dans le menu de QGIS : Extension > CRAIG > Afficher le panneau latéral
+* Dans le menu de QGIS : Extension > RGD > Afficher le panneau latéral
 
 Un nouveau panneau latéral apparaît alors. Il contient une vue arborescente des
-différentes ressources proposées par le CRAIG, ainsi que d'autres services
+différentes ressources proposées par le RGD, ainsi que d'autres services
 fournis par d'autres producteurs de données.
 
 Pour ajouter une couche WMS ou une classe d'entités WFS sur la carte courante de QGIS vous pouvez utiliser l'une des
@@ -32,24 +32,25 @@ sur le titre d'une couche.
 Pour consulter les métadonnées associées à une couche : clic droit sur la
 couche puis "Afficher les métadonnées".
 
-Si vous avez fermé le panneau CRAIG et que vous voulez l'afficher à nouveau, 2 possibilités :
+Si vous avez fermé le panneau RGD et que vous voulez l'afficher à nouveau, 2 possibilités :
 
-* menu Extensions, CRAIG, Afficher le panneau latéral
-* menu Vue, Panneaux, cocher CRAIG
+* menu Extensions, RGD, Afficher le panneau latéral
+* menu Vue, Panneaux, cocher RGD
 
 ## Paramètres
 
-Les paramètres de ce plugin sont accessibles en allant dans le menu Extensions > CRAIG > Paramétrer le plugin :
+Les paramètres de ce plugin sont accessibles en allant dans le menu Extensions > RGD > Paramétrer le plugin :
 
 Par défaut, le fichier de configuration de l'extension est téléchargé à chaque
 lancement de QGIS, ce qui vous assure que l'arborescence soit à jour par
-rapport au contenu mis à disposition par le CRAIG. Vous pouvez également
+rapport au contenu mis à disposition par le RGD. Vous pouvez également
 décider de masquer ou non les dossiers vides, ou bien les couches en cours
 d'intégration.
 
 ## Auteurs originaux
 
-Auteurs :
+Auteurs:
+* Landry Breuil (CRAIG)
 * Benjamin Chartier (Région Picardie, Région Hauts-de-France, Neogeo Technologies puis en tant qu'indépendant)
 * Julie Pierson (UMR LETG)
 

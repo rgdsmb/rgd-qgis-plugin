@@ -1,0 +1,47 @@
+{
+  "title": "RGD - version du 1er octobre 2024",
+  "description": "",
+  "type": "folder",
+  "children": [
+   {
+       "title": "Carte Etat-Major",
+       "description": "Carte Etat-Major",
+       "type": "wmts_layer",
+       "requires_auth": true,
+       "params": {
+           "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+           "format": "image/jpeg",
+           "name": "Carte Etat-Major",
+           "style": "default",
+           "srs": "EPSG:3857",
+           "tilematrixset_name": "Google"
+        }
+  },
+  {
+       "title": "Ortho5cm",
+       "description": "Ortho5cm",
+       "type": "wmts_layer",
+       "requires_auth": true,
+       "params": {
+           "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+           "format": "image/jpeg",
+           "name": "Ortho5cm",
+           "style": "default",
+           "srs": "EPSG:3857",
+           "tilematrixset_name": "Google"
+        }
+  },
+  {
+       "title": "WFS test",
+       "description": "WFS test",
+       "type": "wfs_feature_type",
+       "params": {
+           "url": "https://inspire.brandenburg.de/services/ps_schutzg_wfs",
+           "name": "ps:ProtectedSite",
+           "srs": "EPSG:25833",
+           "version": "2.0.0",
+           "geometryTypeFilter": "MultiSurface"
+        }
+  }
+  ]
+}

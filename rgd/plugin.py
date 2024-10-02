@@ -5,12 +5,14 @@ from qgis.PyQt.QtCore import Qt
 
 import os.path
 
-from craig.utils.plugin_globals import PluginGlobals
-from craig.gui.dock import DockWidget
-from craig.gui.about_box import AboutBox
-from craig.gui.param_box import ParamBox
-from craig.nodes.tree_node_factory import TreeNodeFactory
-from craig.nodes.tree_node_factory import download_tree_config_file
+from rgd.utils.plugin_globals import PluginGlobals
+from rgd.gui.dock import DockWidget
+from rgd.gui.about_box import AboutBox
+from rgd.gui.param_box import ParamBox
+from rgd.gui.localisation_cadastrale import LocalisationCadastraleDialog
+from rgd.gui.recherche_adresse import RechercheAdresseDialog
+from rgd.nodes.tree_node_factory import TreeNodeFactory
+from rgd.nodes.tree_node_factory import download_tree_config_file
 
 
 class SimpleAccessPlugin:
@@ -83,6 +85,18 @@ class SimpleAccessPlugin:
         show_panel_action.triggered.connect(self.showPanelMenuTriggered)
         self.plugin_menu.addAction(show_panel_action)
 
+        localisation_cadastrale_action = QAction(
+            u"Localisation cadastrale…", self.iface.mainWindow()
+        )
+        localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
+        self.plugin_menu.addAction(localisation_cadastrale_action)
+
+        recherche_adresse_action = QAction(
+            u"Recherche par adresse…", self.iface.mainWindow()
+        )
+        recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
+        self.plugin_menu.addAction(recherche_adresse_action)
+
         param_action = QAction(u"Paramétrer le plugin…", self.iface.mainWindow())
         param_action.triggered.connect(self.paramMenuTriggered)
         self.plugin_menu.addAction(param_action)
@@ -110,6 +124,14 @@ class SimpleAccessPlugin:
         Shows the Param box
         """
         dialog = ParamBox(self.iface.mainWindow(), self.dock)
+        dialog.exec_()
+
+    def localisationCadastraleTriggered(self):
+        dialog = LocalisationCadastraleDialog(self.iface.mainWindow(), self.iface)
+        dialog.exec_()
+
+    def rechercheAdresseTriggered(self):
+        dialog = RechercheAdresseDialog(self.iface.mainWindow(), self.iface)
         dialog.exec_()
 
     def unload(self):

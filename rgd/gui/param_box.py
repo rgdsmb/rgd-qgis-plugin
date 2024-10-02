@@ -13,9 +13,9 @@ from qgis.PyQt.QtCore import Qt
 from qgis.core import *
 from qgis.gui import *
 
-from craig.utils.plugin_globals import PluginGlobals
-from craig.nodes.tree_node_factory import TreeNodeFactory
-from craig.nodes.tree_node_factory import download_tree_config_file
+from rgd.utils.plugin_globals import PluginGlobals
+from rgd.nodes.tree_node_factory import TreeNodeFactory
+from rgd.nodes.tree_node_factory import download_tree_config_file
 
 
 class ParamBox(QDialog):
@@ -74,6 +74,14 @@ class ParamBox(QDialog):
             self.download_now_label, self.download_now_btnbox
         )
 
+        self.auth_groupbox = QgsCollapsibleGroupBox(
+            u"Configuration d'authentification"
+        )
+        layout = QFormLayout(self.auth_groupbox)
+        self.auth_settings = QgsAuthSettingsWidget()
+        layout.addRow(self.auth_settings)
+        params_layout.addWidget(self.auth_groupbox)
+
         # Content of the resource tree groupbox
         self.resource_tree_groupbox = QgsCollapsibleGroupBox(
             u"Contenu de l'arbre des ressources"
@@ -121,6 +129,7 @@ class ParamBox(QDialog):
         self.button_box.button(QDialogButtonBox.Apply).clicked.connect(
             self.apply_button_clicked
         )
+        self.auth_settings.configIdChanged.connect(self.config_id_changed)
 
         # Dialog box title, layout, size and display
         title = u"Paramétrage de l'extension " + PluginGlobals.instance().PLUGIN_TAG + "…"
@@ -161,6 +170,10 @@ class ParamBox(QDialog):
         self.hide_empty_groups_cb.setChecked(PluginGlobals.instance().HIDE_EMPTY_GROUPS)
         self.hide_empty_groups_cb.blockSignals(False)
 
+        self.auth_settings.setConfigId(
+            PluginGlobals.instance().AUTH_CONFIG_ID
+        )
+
     def evaluate_flags(self):
         """ """
         # Detect modifications
@@ -184,6 +197,11 @@ class ParamBox(QDialog):
             != PluginGlobals.instance().HIDE_EMPTY_GROUPS
         )
 
+        auth_settings_changed = (
+            self.auth_settings.configId()
+            != PluginGlobals.instance().AUTH_CONFIG_ID
+        )
+
         # Init flags
         self.need_update_visibility_of_tree_items = (
             hide_empty_groups_changed or hide_resources_with_warn_status_changed
@@ -194,6 +212,7 @@ class ParamBox(QDialog):
             or download_at_startup_changed
             or hide_resources_with_warn_status_changed
             or hide_empty_groups_changed
+            or auth_settings_changed
         )
 
         # Update state of the Apply Button
@@ -220,6 +239,12 @@ class ParamBox(QDialog):
     def hide_empty_groups_cb_changed(self, state):
         """
         Event sent when the state of the checkbox change
+        """
+        self.evaluate_flags()
+
+    def config_id_changed(self):
+        """
+        Event sent when the authentification configuration has changed
         """
         self.evaluate_flags()
 
@@ -267,6 +292,9 @@ class ParamBox(QDialog):
         elif self.need_update_visibility_of_tree_items and self.tree_dock is not None:
             self.tree_dock.update_visibility_of_tree_items()
 
+        PluginGlobals.instance().set_qgis_settings_value("auth_config_id",
+            self.auth_settings.configId())
+
     def apply_button_clicked(self):
         """ """
         self.save_settings()
@@ -280,11 +308,8 @@ class ParamBox(QDialog):
         """ """
         # URL of the file
         self.config_file_url_edit.blockSignals(True)
-        self.config_file_url_edit.setText(
-            PluginGlobals.instance().get_qgis_setting_default_value("CONFIG_FILE_URLS")[
-                0
-            ]
-        )
+        urls = PluginGlobals.instance().get_qgis_setting_default_value("CONFIG_FILE_URLS")
+        self.config_file_url_edit.setText(urls[0] if urls else "")
         self.config_file_url_edit.setCursorPosition(0)
         self.config_file_url_edit.blockSignals(False)
 

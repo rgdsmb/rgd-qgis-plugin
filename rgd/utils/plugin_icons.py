@@ -6,8 +6,8 @@ from qgis.PyQt.QtWidgets import QStyle
 from qgis.core import QgsApplication
 import os
 
-from craig.utils.plugin_globals import PluginGlobals
-from craig.utils.singleton import Singleton
+from rgd.utils.plugin_globals import PluginGlobals
+from rgd.utils.singleton import Singleton
 
 
 @Singleton

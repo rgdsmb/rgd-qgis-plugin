@@ -2,8 +2,29 @@
 
 import os
 
-from craig.utils.plugin_globals import PluginGlobals
-from craig.utils.plugin_icons import PluginIcons
+from qgis.PyQt.QtCore import QUrl
+from qgis.PyQt.QtWidgets import QMessageBox
+
+from qgis.core import (
+    QgsProject,
+)
+
+from rgd.utils.plugin_globals import PluginGlobals
+from rgd.utils.plugin_icons import PluginIcons
+
+def AuthMissing():
+    box = QMessageBox(QMessageBox.Warning,
+                      "Authentification absente",
+                      "Cette couche nécessite des éléments d'authentification. Merci de les renseigner dans la configuration du greffon")
+    box.exec_()
+    return None
+
+def InvalidLayer():
+    box = QMessageBox(QMessageBox.Warning,
+                      "Couche invalide",
+                      "Cette couche n'a pas être ajoutée. Vous ne disposez peut être pas des droits permettant d'y accéder.")
+    box.exec_()
+    return None
 
 
 class FavoritesTreeNode:
@@ -135,6 +156,7 @@ class WmsLayerTreeNode(FavoritesTreeNode):
         ident=None,
         params=None,
         bounding_boxes=None,
+        requires_auth=False,
         parent_node=None,
     ):
         """ """
@@ -157,6 +179,7 @@ class WmsLayerTreeNode(FavoritesTreeNode):
         self.layer_srs = params.get("srs")
         self.layer_style_name = params.get("style", "")
         self.can_be_added_to_map = True
+        self.requires_auth = requires_auth
 
         # Icon
         plugin_icons = PluginIcons.instance()
@@ -169,17 +192,26 @@ class WmsLayerTreeNode(FavoritesTreeNode):
         Return the details of the layer used by QGIS to add the layer to the map.
         This dictionary is used by the run_add_to_map_action and layerMimeData methods.
         """
+        url = self.service_url
+        url = str(QUrl.toPercentEncoding(url), "utf-8")
+        uri = u"crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
+            self.layer_srs,
+            self.layer_format,
+            self.layer_name,
+            self.layer_style_name,
+            url,
+        )
+        if self.requires_auth:
+            authId = PluginGlobals.instance().AUTH_CONFIG_ID
+            if not authId:
+                return AuthMissing()
+            uri = "authcfg=" + authId + "&" + uri
+
         qgis_layer_uri_details = {
             "type": "raster",
             "provider": "wms",
             "title": self.title,
-            "uri": u"crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
-                self.layer_srs,
-                self.layer_format,
-                self.layer_name,
-                self.layer_style_name,
-                self.service_url,
-            ),
+            "uri": uri,
         }
 
         return qgis_layer_uri_details
@@ -189,11 +221,16 @@ class WmsLayerTreeNode(FavoritesTreeNode):
         Add the WMS layer with the specified style to the map
         """
         qgis_layer_details = self.get_qgis_layer_details()
-        PluginGlobals.instance().iface.addRasterLayer(
-            qgis_layer_details["uri"],
-            qgis_layer_details["title"],
-            qgis_layer_details["provider"],
-        )
+        if qgis_layer_details is not None:
+            layer = PluginGlobals.instance().iface.addRasterLayer(
+                qgis_layer_details["uri"],
+                qgis_layer_details["title"],
+                qgis_layer_details["provider"],
+            )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
 
 
 class WmsStyleLayerTreeNode(FavoritesTreeNode):
@@ -211,6 +248,7 @@ class WmsStyleLayerTreeNode(FavoritesTreeNode):
         ident=None,
         params=None,
         bounding_boxes=None,
+        requires_auth=False,
         parent_node=None,
     ):
         """ """
@@ -244,18 +282,24 @@ class WmsStyleLayerTreeNode(FavoritesTreeNode):
         """
         if self.parent_node is None:
             return None
+        uri = u"crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
+            self.parent_node.layer_srs,
+            self.parent_node.layer_format,
+            self.parent_node.layer_name,
+            self.layer_style_name,
+            self.parent_node.service_url,
+        )
+        if self.requires_auth:
+            authId = PluginGlobals.instance().AUTH_CONFIG_ID
+            if not authId:
+                return AuthMissing()
+            uri = "authcfg=" + authId + "&" + uri
 
         qgis_layer_uri_details = {
             "type": "raster",
             "provider": "wms",
             "title": self.title,
-            "uri": u"crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
-                self.parent_node.layer_srs,
-                self.parent_node.layer_format,
-                self.parent_node.layer_name,
-                self.layer_style_name,
-                self.parent_node.service_url,
-            ),
+            "uri": uri,
         }
 
         return qgis_layer_uri_details
@@ -267,11 +311,15 @@ class WmsStyleLayerTreeNode(FavoritesTreeNode):
 
         qgis_layer_details = self.get_qgis_layer_details()
         if qgis_layer_details is not None:
-            PluginGlobals.instance().iface.addRasterLayer(
+            layer = PluginGlobals.instance().iface.addRasterLayer(
                 qgis_layer_details["uri"],
                 qgis_layer_details["title"],
                 qgis_layer_details["provider"],
             )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
 
 
 class WmtsLayerTreeNode(FavoritesTreeNode):
@@ -289,6 +337,7 @@ class WmtsLayerTreeNode(FavoritesTreeNode):
         ident=None,
         params=None,
         bounding_boxes=None,
+        requires_auth=False,
         parent_node=None,
     ):
         """ """
@@ -312,6 +361,7 @@ class WmtsLayerTreeNode(FavoritesTreeNode):
         self.layer_srs = params.get("srs")
         self.layer_style_name = params.get("style", "")
         self.can_be_added_to_map = True
+        self.requires_auth = requires_auth
 
         # Icon
         plugin_icons = PluginIcons.instance()
@@ -324,18 +374,28 @@ class WmtsLayerTreeNode(FavoritesTreeNode):
         Return the details of the layer used by QGIS to add the layer to the map.
         This dictionary is used by the run_add_to_map_action and layerMimeData methods.
         """
+        url = self.service_url
+        url = str(QUrl.toPercentEncoding(url), "utf-8")
+        uri = u"tileMatrixSet={}&crs={}&featureCount=10&format={}&layers={}&styles={}&url={}".format(
+            self.layer_tilematrixset_name,
+            self.layer_srs,
+            self.layer_format,
+            self.layer_name,
+            self.layer_style_name,
+            url,
+        )
+
+        if self.requires_auth:
+            authId = PluginGlobals.instance().AUTH_CONFIG_ID
+            if not authId:
+                return AuthMissing()
+            uri = "authcfg=" + authId + "&" + uri
+
         qgis_layer_uri_details = {
             "type": "raster",
             "provider": "wms",
             "title": self.title,
-            "uri": u"tileMatrixSet={}&crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
-                self.layer_tilematrixset_name,
-                self.layer_srs,
-                self.layer_format,
-                self.layer_name,
-                self.layer_style_name,
-                self.service_url,
-            ),
+            "uri": uri,
         }
 
         return qgis_layer_uri_details
@@ -346,11 +406,15 @@ class WmtsLayerTreeNode(FavoritesTreeNode):
         """
         qgis_layer_details = self.get_qgis_layer_details()
         if qgis_layer_details is not None:
-            PluginGlobals.instance().iface.addRasterLayer(
+            layer = PluginGlobals.instance().iface.addRasterLayer(
                 qgis_layer_details["uri"],
                 qgis_layer_details["title"],
                 qgis_layer_details["provider"],
             )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
 
 
 class WfsFeatureTypeTreeNode(FavoritesTreeNode):
@@ -368,6 +432,7 @@ class WfsFeatureTypeTreeNode(FavoritesTreeNode):
         ident=None,
         params=None,
         bounding_boxes=None,
+        requires_auth=False,
         parent_node=None,
     ):
         """ """
@@ -387,9 +452,11 @@ class WfsFeatureTypeTreeNode(FavoritesTreeNode):
         self.service_url = params.get("url")
         self.feature_type_name = params.get("name")
         self.filter = params.get("filter")
-        self.wfs_version = params.get("version", "1.0.0")
+        self.wfs_version = params.get("version", "auto")
         self.layer_srs = params.get("srs")
+        self.geometryTypeFilter = params.get("geometryTypeFilter")
         self.can_be_added_to_map = True
+        self.requires_auth = requires_auth
 
         # Icon
         plugin_icons = PluginIcons.instance()
@@ -403,20 +470,24 @@ class WfsFeatureTypeTreeNode(FavoritesTreeNode):
         This dictionary is used by the run_add_to_map_action and layerMimeData methods.
         """
 
-        first_param_prefix = "?"
-        if "?" in self.service_url:
-            first_param_prefix = "&"
-
-        uri = u"{}{}SERVICE=WFS&VERSION={}&REQUEST=GetFeature&TYPENAME={}&SRSNAME={}".format(
-            self.service_url,
-            first_param_prefix,
-            self.wfs_version,
-            self.feature_type_name,
+        uri = u"restrictToRequestBBOX='1' srsname='{}' typename='{}' version='{}' url='{}'".format(
             self.layer_srs,
+            self.feature_type_name,
+            self.wfs_version,
+            self.service_url,
         )
 
+        if self.geometryTypeFilter:
+            uri += " geometryTypeFilter='{}'".format(self.geometryTypeFilter)
+
+        if self.requires_auth:
+            authId = PluginGlobals.instance().AUTH_CONFIG_ID
+            if not authId:
+                return AuthMissing()
+            uri = "authcfg=" + authId + " " + uri
+
         if self.filter:
-            uri += "&Filter={}".format(self.filter)
+            uri += " filter={}".format(self.filter)
 
         qgis_layer_uri_details = {
             "type": "vector",
@@ -433,11 +504,15 @@ class WfsFeatureTypeTreeNode(FavoritesTreeNode):
         """
         qgis_layer_details = self.get_qgis_layer_details()
         if qgis_layer_details is not None:
-            PluginGlobals.instance().iface.addVectorLayer(
+            layer = PluginGlobals.instance().iface.addVectorLayer(
                 qgis_layer_details["uri"],
                 qgis_layer_details["title"],
                 qgis_layer_details["provider"],
             )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
 
 
 class WfsFeatureTypeFilterTreeNode(FavoritesTreeNode):
@@ -520,11 +595,15 @@ class WfsFeatureTypeFilterTreeNode(FavoritesTreeNode):
 
         qgis_layer_details = self.get_qgis_layer_details()
         if qgis_layer_details is not None:
-            PluginGlobals.instance().iface.addVectorLayer(
+            layer = PluginGlobals.instance().iface.addVectorLayer(
                 qgis_layer_details["uri"],
                 qgis_layer_details["title"],
                 qgis_layer_details["provider"],
             )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
 
 
 class GdalWmsConfigFileTreeNode(FavoritesTreeNode):
@@ -590,6 +669,10 @@ class GdalWmsConfigFileTreeNode(FavoritesTreeNode):
         # PluginGlobals.instance().iface.addRasterLayer(self.gdal_config_file_path, self.title)
         qgis_layer_details = self.get_qgis_layer_details()
         if qgis_layer_details is not None:
-            PluginGlobals.instance().iface.addRasterLayer(
+            layer = PluginGlobals.instance().iface.addRasterLayer(
                 qgis_layer_details["uri"], qgis_layer_details["title"]
             )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
