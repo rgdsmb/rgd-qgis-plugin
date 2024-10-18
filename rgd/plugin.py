@@ -2,6 +2,7 @@
 
 from qgis.PyQt.QtWidgets import QAction, QMenu
 from qgis.PyQt.QtCore import Qt
+from qgis.PyQt.QtGui import QIcon
 
 import os.path
 
@@ -100,11 +101,13 @@ class SimpleAccessPlugin:
         recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
         self.plugin_menu.addAction(recherche_adresse_action)
 
-        param_action = QAction(u"Paramétrer le plugin…", self.iface.mainWindow())
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "config.png")
+        param_action = QAction(QIcon(icon_path), u"Paramétrer le plugin…", self.iface.mainWindow())
         param_action.triggered.connect(self.paramMenuTriggered)
         self.plugin_menu.addAction(param_action)
 
-        about_action = QAction(u"À propos…", self.iface.mainWindow())
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "about.png")
+        about_action = QAction(QIcon(icon_path), u"À propos…", self.iface.mainWindow())
         about_action.triggered.connect(self.aboutMenuTriggered)
         self.plugin_menu.addAction(about_action)
 
