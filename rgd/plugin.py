@@ -29,6 +29,9 @@ class SimpleAccessPlugin:
             os.path.dirname(os.path.abspath(__file__))
         )
         PluginGlobals.instance().set_plugin_iface(self.iface)
+
+        PluginGlobals.instance().create_oauth2_config()
+
         PluginGlobals.instance().reload_globals_from_qgis_settings()
 
         config_struct = None

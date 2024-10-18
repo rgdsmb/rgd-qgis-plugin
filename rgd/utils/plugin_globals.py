@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import copy
+import json
 import os
 from rgd.utils.singleton import Singleton
 from qgis.PyQt.QtCore import QSettings
+from qgis.PyQt.QtWidgets import QMessageBox
 
+from qgis.core import QgsApplication, QgsAuthMethodConfig
 
 @Singleton
 class PluginGlobals:
@@ -49,6 +52,9 @@ class PluginGlobals:
         "https://raw.githubusercontent.com/rgdsmb/rgd-qgis-plugin/refs/heads/master/rgd/config/config.json"
     ]
     CONFIG_FILE_URLS = copy.deepcopy(CONFIG_FILE_URLS_FACTORY)
+
+    # Must be 7 characters
+    FACTORY_AUTH_CONFIG_ID = "RGDOAU2"
 
     # Hide resources with status = warn
     HIDE_RESOURCES_WITH_WARN_STATUS = True
@@ -170,7 +176,11 @@ class PluginGlobals:
             u"{0}/config_file_urls".format(self.PLUGIN_TAG),
             self.CONFIG_FILE_URLS_FACTORY,
         )
-        s.setValue(u"{0}/auth_config_id".format(self.PLUGIN_TAG), None)
+        s.setValue(u"{0}/auth_config_id".format(self.PLUGIN_TAG), self.FACTORY_AUTH_CONFIG_ID)
+
+        auth_mgr = QgsApplication.authManager()
+        auth_mgr.removeAuthenticationConfig(self.FACTORY_AUTH_CONFIG_ID)
+        self.create_oauth2_config()
 
     def get_qgis_setting_default_value(self, setting):
         """ """
@@ -193,3 +203,46 @@ class PluginGlobals:
 
         # Reload all settings values
         self.reload_globals_from_qgis_settings()
+
+
+    def create_oauth2_config(self):
+
+        auth_mgr = QgsApplication.authManager()
+
+        if self.FACTORY_AUTH_CONFIG_ID not in auth_mgr.availableAuthMethodConfigs():
+
+            if not auth_mgr.masterPasswordIsSet():
+                QMessageBox(QMessageBox.Information,
+                            "Initialisation de l'extension RGD Savoie Mont-Blanc",
+                            "L'extension RGD Savoie Mont-Blanc va initialiser sa configuration pour l'authentification OAuth2 (SSO). Il va vous être demandé de saisir le mot de passe principal protégeant la base de données QGIS de configurations d'authentification (Wallet/Keyring)").exec_()
+
+            config = {
+                "accessMethod":0,
+                "apiKey":"",
+                "clientId":"SIGDesktop-qeAPxX3K6qLJ35",
+                "clientSecret":"",
+                "configType":1,
+                "grantFlow":3,
+                "persistToken":False,
+                "redirectHost":"127.0.0.1",
+                "redirectPort":"7070",
+                "redirectUrl":"qgis-client",
+                "refreshTokenUrl":"https://login.rgd.fr/realms/rgd/protocol/openid-connect/token",
+                "requestTimeout":"30",
+                "requestUrl":"https://login.rgd.fr/realms/rgd/protocol/openid-connect/auth",
+                "scope":"openid profile groups email",
+                "tokenUrl":"https://login.rgd.fr/realms/rgd/protocol/openid-connect/token",
+                "version":1
+            }
+
+            auth_cfg = QgsAuthMethodConfig("OAuth2")
+            auth_cfg.setId(self.FACTORY_AUTH_CONFIG_ID)
+            auth_cfg.setName("Configuration OAuth2 pour données de RGDSMB")
+            auth_cfg.setConfig('oauth2config', json.dumps(config))
+
+            if auth_mgr.storeAuthenticationConfig(auth_cfg):
+                self.set_qgis_settings_value("auth_config_id", self.FACTORY_AUTH_CONFIG_ID)
+            if self.FACTORY_AUTH_CONFIG_ID not in auth_mgr.availableAuthMethodConfigs():
+                QMessageBox(QMessageBox.Warning,
+                        "Initialisation de l'extension RGD Savoie Mont-Blanc",
+                        "Erreur lors de la tentative d'enregistrement de la configuration pour l'authentification OAuth2 (SSO)").exec_()

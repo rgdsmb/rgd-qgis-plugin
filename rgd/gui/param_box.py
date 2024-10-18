@@ -338,6 +338,12 @@ class ParamBox(QDialog):
         )
         self.hide_empty_groups_cb.blockSignals(False)
 
+        auth_mgr = QgsApplication.authManager()
+        if PluginGlobals.instance().FACTORY_AUTH_CONFIG_ID in auth_mgr.availableAuthMethodConfigs():
+            auth_mgr.removeAuthenticationConfig(PluginGlobals.instance().FACTORY_AUTH_CONFIG_ID)
+        PluginGlobals.instance().create_oauth2_config()
+        self.auth_settings.setConfigId(PluginGlobals.instance().FACTORY_AUTH_CONFIG_ID)
+
         self.evaluate_flags()
 
     def closeEvent(self, evnt):
