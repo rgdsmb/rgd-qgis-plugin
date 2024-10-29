@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from qgis.PyQt.QtWidgets import QAction, QMenu
-from qgis.PyQt.QtCore import Qt
-from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtWidgets import QAction, QMenu, QToolBar
+from qgis.PyQt.QtCore import Qt, QUrl
+from qgis.PyQt.QtGui import QIcon, QDesktopServices
+
+from qgis.gui import QgsMapToolEmitPoint
 
 import os.path
 
@@ -14,7 +16,7 @@ from rgd.gui.localisation_cadastrale import LocalisationCadastraleDialog
 from rgd.gui.recherche_adresse import RechercheAdresseDialog
 from rgd.nodes.tree_node_factory import TreeNodeFactory
 from rgd.nodes.tree_node_factory import download_tree_config_file
-
+from rgd.utils.maptools import reproject_point
 
 class SimpleAccessPlugin:
     """
@@ -64,11 +66,19 @@ class SimpleAccessPlugin:
         """
         Plugin GUI initialisation.
         Creates a menu item in the menu of QGIS
+        Creates a toolbar
         Creates a DockWidget containing the tree of resources
         """
 
+        self.canvas = self.iface.mapCanvas()
+        self.interrogTool = QgsMapToolEmitPoint(self.canvas)
+        self.interrogTool.canvasClicked.connect(self.display_point)
+
         # Create a menu
         self.createPluginMenu()
+
+        # Create a toolbar
+        self.createToolbar()
 
         # Create a dockable panel with a tree of resources
         self.dock = DockWidget()
@@ -89,14 +99,23 @@ class SimpleAccessPlugin:
         show_panel_action.triggered.connect(self.showPanelMenuTriggered)
         self.plugin_menu.addAction(show_panel_action)
 
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_interr.png")
+        interrogation_parcellaire_action = QAction(
+            QIcon(icon_path), u"Interrogation parcellaire…", self.iface.mainWindow()
+        )
+        interrogation_parcellaire_action.triggered.connect(self.interrogationParcellaireTriggered)
+        self.plugin_menu.addAction(interrogation_parcellaire_action)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
         localisation_cadastrale_action = QAction(
-            u"Localisation cadastrale…", self.iface.mainWindow()
+            QIcon(icon_path), u"Localisation cadastrale…", self.iface.mainWindow()
         )
         localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
         self.plugin_menu.addAction(localisation_cadastrale_action)
 
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
         recherche_adresse_action = QAction(
-            u"Recherche par adresse…", self.iface.mainWindow()
+            QIcon(icon_path), u"Recherche par adresse…", self.iface.mainWindow()
         )
         recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
         self.plugin_menu.addAction(recherche_adresse_action)
@@ -110,6 +129,42 @@ class SimpleAccessPlugin:
         about_action = QAction(QIcon(icon_path), u"À propos…", self.iface.mainWindow())
         about_action.triggered.connect(self.aboutMenuTriggered)
         self.plugin_menu.addAction(about_action)
+
+
+    def createToolbar(self):
+        """ Creates a toolbar """
+
+        self.toolbar = self.iface.mainWindow().findChild(QToolBar, PluginGlobals.instance().PLUGIN_TAG)
+        if self.toolbar:
+            self.toolbar.setVisible(True)
+            return
+
+        self.toolbar = QToolBar(PluginGlobals.instance().PLUGIN_TAG, self.iface.mainWindow())
+        self.toolbar.setObjectName(PluginGlobals.instance().PLUGIN_TAG)
+        self.iface.addToolBar(self.toolbar)
+        self.toolbar.setVisible(True)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_interr.png")
+        interrogation_parcellaire_action = QAction(
+            QIcon(icon_path), u"Interrogation parcellaire…", self.iface.mainWindow()
+        )
+        interrogation_parcellaire_action.triggered.connect(self.interrogationParcellaireTriggered)
+        self.toolbar.addAction(interrogation_parcellaire_action)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
+        localisation_cadastrale_action = QAction(
+            QIcon(icon_path), u"Localisation cadastrale…", self.iface.mainWindow()
+        )
+        localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
+        self.toolbar.addAction(localisation_cadastrale_action)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
+        recherche_adresse_action = QAction(
+            QIcon(icon_path), u"Recherche par adresse…", self.iface.mainWindow()
+        )
+        recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
+        self.toolbar.addAction(recherche_adresse_action)
+
 
     def showPanelMenuTriggered(self):
         """
@@ -132,6 +187,22 @@ class SimpleAccessPlugin:
         dialog = ParamBox(self.iface.mainWindow(), self.dock)
         dialog.exec_()
 
+    def interrogationParcellaireTriggered(self):
+        self.canvas.setMapTool(self.interrogTool)
+
+    def display_point(self, point, button):
+        try:
+            x = float(point.x())
+            y = float(point.y())
+            canvas_crs = self.canvas.mapSettings().destinationCrs()
+            canvas_crs_auth_id = canvas_crs.authid()
+
+            x, y = reproject_point(x, y, canvas_crs_auth_id, "EPSG:2154")
+            url = f"https://majicad.rgd74.fr/cadastre/index.phtml?operation=GetFicheparc&type=complet&format=html&intersect=SRID%3D2154%3BPOINT%28{x}%20{y}%29"
+            QDesktopServices.openUrl(QUrl(url))
+        except Exception as e:
+            self.iface.messageBar().pushMessage('PyErreur : requete intPyErrogation parcellaire | PyErr:' + str(e), Qgis.Warning)
+
     def localisationCadastraleTriggered(self):
         dialog = LocalisationCadastraleDialog(self.iface.mainWindow(), self.iface)
         dialog.exec_()
@@ -145,3 +216,5 @@ class SimpleAccessPlugin:
         Removes the plugin menu
         """
         self.iface.pluginMenu().removeAction(self.plugin_menu.menuAction())
+
+        self.iface.mainWindow().removeToolBar(self.toolbar)
