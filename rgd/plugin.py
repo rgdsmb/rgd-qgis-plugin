@@ -109,10 +109,10 @@ class SimpleAccessPlugin:
         # Create a dockable panel with a tree of resources
         self.dock = DockWidget()
         self.dock.set_tree_content(self.ressources_tree)
+        self.inVisibilityChanged = False
         self.dock.visibilityChanged.connect(self.dockVisibilityChanged)
         self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
 
-        self.inVisibilityChanged = False
         s = QSettings()
         if s.value("{0}/show_dock".format(PluginGlobals.instance().PLUGIN_TAG), "1") == "1":
             self.show_panel_action.setChecked(True)
