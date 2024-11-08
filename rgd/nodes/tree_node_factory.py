@@ -19,6 +19,7 @@ from .nodes import (
     WmsStyleLayerTreeNode,
     WmtsLayerTreeNode,
     WfsFeatureTypeTreeNode,
+    XYZVectorTilesLayerTreeNode,
 )
 from .nodes import (
     WfsFeatureTypeFilterTreeNode,
@@ -210,6 +211,20 @@ class TreeNodeFactory:
                     node_ident,
                     node_params,
                     node_bounding_boxes,
+                    parent_node,
+                )
+
+            elif node_type == PluginGlobals.instance().NODE_TYPE_XYZVECTORTILES_LAYER:
+                node = XYZVectorTilesLayerTreeNode(
+                    node_title,
+                    node_type,
+                    node_description,
+                    node_status,
+                    node_metadata_url,
+                    node_ident,
+                    node_params,
+                    node_bounding_boxes,
+                    requires_auth,
                     parent_node,
                 )
 

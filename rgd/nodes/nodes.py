@@ -2,7 +2,7 @@
 
 import os
 
-from qgis.PyQt.QtCore import QUrl
+from qgis.PyQt.QtCore import QUrl, QUrlQuery
 from qgis.PyQt.QtWidgets import QMessageBox
 
 from qgis.core import (
@@ -411,6 +411,99 @@ class WmtsLayerTreeNode(FavoritesTreeNode):
                 qgis_layer_details["title"],
                 qgis_layer_details["provider"],
             )
+            if not layer or not layer.isValid():
+                if layer:
+                    QgsProject.instance().removeMapLayer(layer.id())
+                InvalidLayer()
+
+
+class XYZVectorTilesLayerTreeNode(FavoritesTreeNode):
+    """
+    Tree node for a XYZ Vector Tiles layer
+    """
+
+    def __init__(
+        self,
+        title,
+        node_type=PluginGlobals.instance().NODE_TYPE_XYZVECTORTILES_LAYER,
+        description=None,
+        status=None,
+        metadata_url=None,
+        ident=None,
+        params=None,
+        bounding_boxes=None,
+        requires_auth=False,
+        parent_node=None,
+    ):
+        """ """
+        FavoritesTreeNode.__init__(
+            self,
+            title,
+            node_type,
+            description,
+            status,
+            metadata_url,
+            ident,
+            params,
+            bounding_boxes,
+            parent_node,
+        )
+
+        self.service_url = params.get("url")
+        self.style_url = params.get("styleUrl")
+        self.layer_srs = params.get("srs")
+        self.zmin = params.get("zmin")
+        self.zmax = params.get("zmax")
+        self.can_be_added_to_map = True
+        self.requires_auth = requires_auth
+
+        # Icon
+        plugin_icons = PluginIcons.instance()
+        self.icon = plugin_icons.wms_style_icon
+        if self.status == PluginGlobals.instance().NODE_STATUS_WARN:
+            self.icon = plugin_icons.warn_icon
+
+    def get_qgis_layer_details(self):
+        """
+        Return the details of the layer used by QGIS to add the layer to the map.
+        This dictionary is used by the run_add_to_map_action and layerMimeData methods.
+        """
+
+        urlQuery = QUrlQuery()
+        urlQuery.addQueryItem("type", "xyz")
+        urlQuery.addQueryItem("url", self.service_url)
+        if self.style_url:
+            urlQuery.addQueryItem("styleUrl", self.style_url)
+        if self.zmin is not None:
+            urlQuery.addQueryItem("zmin", str(self.zmin))
+        if self.zmax is not None:
+            urlQuery.addQueryItem("zmax", str(self.zmax))
+
+        uri = urlQuery.toString( QUrl.FullyEncoded )
+
+        if self.requires_auth:
+            authId = PluginGlobals.instance().AUTH_CONFIG_ID
+            if not authId:
+                return AuthMissing()
+            uri = "authcfg=" + authId + "&" + uri
+
+        qgis_layer_uri_details = {
+            "type": "vector_tiles",
+            "title": self.title,
+            "uri": uri,
+        }
+
+        return qgis_layer_uri_details
+
+    def run_add_to_map_action(self):
+        """
+        Add the XYZVectorTiles layer to the map
+        """
+        qgis_layer_details = self.get_qgis_layer_details()
+        if qgis_layer_details is not None:
+            layer = PluginGlobals.instance().iface.addVectorTileLayer(
+                qgis_layer_details["uri"],
+                qgis_layer_details["title"])
             if not layer or not layer.isValid():
                 if layer:
                     QgsProject.instance().removeMapLayer(layer.id())

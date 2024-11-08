@@ -17,6 +17,7 @@ class PluginGlobals:
     plugin_path = None
 
     # Plugin infos
+    PLUGIN_NAME = u"RGD Savoie Mont-Blanc"
     PLUGIN_TAG = u"RGD"
     PLUGIN_VERSION = u"0.1"
     PLUGIN_SOURCE_REPOSITORY = u"https://github.com/rgdsmb/rgd-qgis-plugin"
@@ -30,6 +31,7 @@ class PluginGlobals:
     NODE_TYPE_WFS_FEATURE_TYPE = "wfs_feature_type"
     NODE_TYPE_WFS_FEATURE_TYPE_FILTER = "wfs_feature_type_filter"
     NODE_TYPE_GDAL_WMS_CONFIG_FILE = "gdal_wms_config_file"
+    NODE_TYPE_XYZVECTORTILES_LAYER = "xyzvectortiles_layer"
 
     # Node status values
     NODE_STATUS_WARN = "warn"
@@ -177,6 +179,8 @@ class PluginGlobals:
             self.CONFIG_FILE_URLS_FACTORY,
         )
         s.setValue(u"{0}/auth_config_id".format(self.PLUGIN_TAG), self.FACTORY_AUTH_CONFIG_ID)
+
+        s.setValue(u"{0}/show_dock".format(self.PLUGIN_TAG), u"1")
 
         auth_mgr = QgsApplication.authManager()
         auth_mgr.removeAuthenticationConfig(self.FACTORY_AUTH_CONFIG_ID)

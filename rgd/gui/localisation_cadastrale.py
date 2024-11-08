@@ -13,7 +13,11 @@ from qgis.core import (
     QgsGeometry,
     QgsMessageLog,
     QgsNetworkAccessManager,
+    QgsProject,
 )
+
+from qgis.core import QgsProject, QgsVectorLayer, QgsFeature, QgsPointXY, QgsSymbol, QgsSimpleMarkerSymbolLayer
+from qgis.PyQt.QtGui import QColor
 
 from rgd.utils.maptools import reproject_point, center_on_xy
 from rgd.utils.network_utils import get_json_response
@@ -25,11 +29,14 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 
 
 class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
-    def __init__(self, parent, plugin_iface):
+    def __init__(self, parent, plugin_iface, ressources_tree):
         """Constructor."""
         QDialog.__init__(self, parent)
         self.setupUi(self)
         self.plugin_iface = plugin_iface
+        self.ressources_tree = ressources_tree
+
+        self.addPlanCadastralLayerIfNeeded(ressources_tree)
 
         # gestion de la pos fenetre
         self.userPos = None
@@ -49,6 +56,8 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
         self.map_parcelle = {}
         self.map_lieudit = {}
 
+        self.temp_layer = None
+
         self.combocommunes.currentIndexChanged.connect(self.combocommunes_index_changed)
         self.combosection.currentIndexChanged.connect(self.combosection_index_changed)
 
@@ -65,6 +74,21 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
     def close_button_clicked(self):
         """ """
         self.close()
+
+    def addPlanCadastralLayerIfNeeded(self, ressources_tree):
+
+        # Check if "Plan Cadastral" layer is already displayed
+        layers = QgsProject.instance().mapLayers().values()
+        for layer in layers:
+            if layer.name() == "Plan cadastral":
+                return
+
+        for child in ressources_tree.children:
+            if child.title == "Plan cadastral":
+                for subchild in child.children:
+                    if subchild.title == "Plan cadastral":
+                        subchild.run_add_to_map_action()
+
 
     def startQuery(self):
         if self.background_queries_count == 0:
@@ -91,7 +115,7 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
         # enregistrement nouvelle position fenetre
         self.userPos = event.pos()
 
-    def closeEvent(self,event):
+    def cleanup(self):
         # enregistrement position fenetre
         s = QSettings()
         s.setValue("qgis_rgd_plugin/search_ywin", self.pos().y())
@@ -100,9 +124,15 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
         self.abortQueries()
         QApplication.restoreOverrideCursor()
 
+        if self.temp_layer:
+            QgsProject.instance().removeMapLayer(self.temp_layer)
+            self.plugin_iface.mapCanvas().refresh()
+
+    def closeEvent(self, event):
+        self.cleanup()
+
     def reject(self):
-        self.abortQueries()
-        QApplication.restoreOverrideCursor()
+        self.cleanup()
         super(LocalisationCadastraleDialog, self).reject()
 
     def checkDataInResponse(self, response):
@@ -321,15 +351,47 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
 
         geom = QgsGeometry.fromWkt(wkt)
         centroid = geom.centroid().asPoint()
-        x= centroid.x()
+        x = centroid.x()
         y = centroid.y()
 
         c = self.plugin_iface.mapCanvas()
         crs = c.mapSettings().destinationCrs()
         project_epsg = crs.authid()
 
+        x_ori, y_ori = x, y
         x, y = reproject_point(x, y, "EPSG:" + str(srid), project_epsg)
         if x:
             if self.scalecheck.isChecked():
                 zoomScale = self.plugin_iface.mapCanvas().scale()
             center_on_xy(self.plugin_iface, x, y, zoomScale)
+
+        if self.temp_layer is None:
+
+            self.temp_layer = QgsVectorLayer(f"Point?crs=EPSG:{srid}", "Résultat de la localisation cadastrale", "memory")
+
+            # Create a red cross marker symbol
+            symbol = QgsSymbol.defaultSymbol(self.temp_layer.geometryType())
+            symbol_layer = QgsSimpleMarkerSymbolLayer()
+            symbol_layer.setShape(QgsSimpleMarkerSymbolLayer.Cross)
+            symbol_layer.setSize(5)
+            symbol_layer.setStrokeWidth(2) 
+            symbol_layer.setColor(QColor("red"))
+
+            symbol.changeSymbolLayer(0, symbol_layer)
+
+            self.temp_layer.renderer().setSymbol(symbol)
+
+            # Add the layer to the project
+            QgsProject.instance().addMapLayer(self.temp_layer)
+        else:
+            self.temp_layer.startEditing()
+            feature_ids = [feature.id() for feature in self.temp_layer.getFeatures()]
+            self.temp_layer.deleteFeatures(feature_ids)
+            self.temp_layer.commitChanges()
+
+        # Create a feature with the given coordinates
+        point_feature = QgsFeature()
+        point_feature.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(x_ori, y_ori)))
+        layer_provider = self.temp_layer.dataProvider()
+        layer_provider.addFeature(point_feature)
+        self.temp_layer.updateExtents()

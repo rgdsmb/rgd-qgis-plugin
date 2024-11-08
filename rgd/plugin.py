@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from qgis.PyQt.QtWidgets import QAction, QMenu, QToolBar
-from qgis.PyQt.QtCore import Qt, QUrl
+from qgis.PyQt.QtCore import Qt, QSettings, QUrl
 from qgis.PyQt.QtGui import QIcon, QDesktopServices
 
+from qgis.core import QgsApplication
 from qgis.gui import QgsMapToolEmitPoint
 
 import os.path
@@ -74,6 +75,31 @@ class SimpleAccessPlugin:
         self.interrogTool = QgsMapToolEmitPoint(self.canvas)
         self.interrogTool.canvasClicked.connect(self.display_point)
 
+        self.show_panel_action = QAction(
+            QgsApplication.getThemeIcon("/mDockify.svg"),
+            u"Afficher le panneau latéral", self.iface.mainWindow()
+        )
+        self.show_panel_action.setCheckable(True)
+        self.show_panel_action.triggered.connect(self.showPanelMenuTriggered)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_interr.png")
+        self.interrogation_parcellaire_action = QAction(
+            QIcon(icon_path), u"Interrogation parcellaire…", self.iface.mainWindow()
+        )
+        self.interrogation_parcellaire_action.triggered.connect(self.interrogationParcellaireTriggered)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
+        self.localisation_cadastrale_action = QAction(
+            QIcon(icon_path), u"Localisation cadastrale…", self.iface.mainWindow()
+        )
+        self.localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
+
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
+        self.recherche_adresse_action = QAction(
+            QIcon(icon_path), u"Recherche par adresse…", self.iface.mainWindow()
+        )
+        self.recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
+
         # Create a menu
         self.createPluginMenu()
 
@@ -83,42 +109,32 @@ class SimpleAccessPlugin:
         # Create a dockable panel with a tree of resources
         self.dock = DockWidget()
         self.dock.set_tree_content(self.ressources_tree)
+        self.dock.visibilityChanged.connect(self.dockVisibilityChanged)
         self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
+
+        self.inVisibilityChanged = False
+        s = QSettings()
+        if s.value("{0}/show_dock".format(PluginGlobals.instance().PLUGIN_TAG), "1") == "1":
+            self.show_panel_action.setChecked(True)
+        else:
+            self.dock.hide()
+            self.show_panel_action.setChecked(False)
 
     def createPluginMenu(self):
         """
         Creates the plugin main menu
         """
         plugin_menu = self.iface.pluginMenu()
-        self.plugin_menu = QMenu(PluginGlobals.instance().PLUGIN_TAG, plugin_menu)
+        self.plugin_menu = QMenu(PluginGlobals.instance().PLUGIN_NAME, plugin_menu)
         plugin_menu.addMenu(self.plugin_menu)
 
-        show_panel_action = QAction(
-            u"Afficher le panneau latéral", self.iface.mainWindow()
-        )
-        show_panel_action.triggered.connect(self.showPanelMenuTriggered)
-        self.plugin_menu.addAction(show_panel_action)
+        self.plugin_menu.addAction(self.show_panel_action)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_interr.png")
-        interrogation_parcellaire_action = QAction(
-            QIcon(icon_path), u"Interrogation parcellaire…", self.iface.mainWindow()
-        )
-        interrogation_parcellaire_action.triggered.connect(self.interrogationParcellaireTriggered)
-        self.plugin_menu.addAction(interrogation_parcellaire_action)
+        self.plugin_menu.addAction(self.interrogation_parcellaire_action)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
-        localisation_cadastrale_action = QAction(
-            QIcon(icon_path), u"Localisation cadastrale…", self.iface.mainWindow()
-        )
-        localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
-        self.plugin_menu.addAction(localisation_cadastrale_action)
+        self.plugin_menu.addAction(self.localisation_cadastrale_action)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
-        recherche_adresse_action = QAction(
-            QIcon(icon_path), u"Recherche par adresse…", self.iface.mainWindow()
-        )
-        recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
-        self.plugin_menu.addAction(recherche_adresse_action)
+        self.plugin_menu.addAction(self.recherche_adresse_action)
 
         icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "config.png")
         param_action = QAction(QIcon(icon_path), u"Paramétrer le plugin…", self.iface.mainWindow())
@@ -134,44 +150,44 @@ class SimpleAccessPlugin:
     def createToolbar(self):
         """ Creates a toolbar """
 
-        self.toolbar = self.iface.mainWindow().findChild(QToolBar, PluginGlobals.instance().PLUGIN_TAG)
+        self.toolbar = self.iface.mainWindow().findChild(QToolBar, PluginGlobals.instance().PLUGIN_NAME)
         if self.toolbar:
             self.toolbar.setVisible(True)
             return
 
-        self.toolbar = QToolBar(PluginGlobals.instance().PLUGIN_TAG, self.iface.mainWindow())
-        self.toolbar.setObjectName(PluginGlobals.instance().PLUGIN_TAG)
+        self.toolbar = QToolBar(PluginGlobals.instance().PLUGIN_NAME, self.iface.mainWindow())
+        self.toolbar.setObjectName(PluginGlobals.instance().PLUGIN_NAME)
         self.iface.addToolBar(self.toolbar)
         self.toolbar.setVisible(True)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_interr.png")
-        interrogation_parcellaire_action = QAction(
-            QIcon(icon_path), u"Interrogation parcellaire…", self.iface.mainWindow()
-        )
-        interrogation_parcellaire_action.triggered.connect(self.interrogationParcellaireTriggered)
-        self.toolbar.addAction(interrogation_parcellaire_action)
+        self.toolbar.addAction(self.show_panel_action)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
-        localisation_cadastrale_action = QAction(
-            QIcon(icon_path), u"Localisation cadastrale…", self.iface.mainWindow()
-        )
-        localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
-        self.toolbar.addAction(localisation_cadastrale_action)
+        self.toolbar.addAction(self.interrogation_parcellaire_action)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
-        recherche_adresse_action = QAction(
-            QIcon(icon_path), u"Recherche par adresse…", self.iface.mainWindow()
-        )
-        recherche_adresse_action.triggered.connect(self.rechercheAdresseTriggered)
-        self.toolbar.addAction(recherche_adresse_action)
+        self.toolbar.addAction(self.localisation_cadastrale_action)
+
+        self.toolbar.addAction(self.recherche_adresse_action)
 
 
     def showPanelMenuTriggered(self):
         """
-        Shows the dock widget
+        Shows or hides the dock widget
         """
-        self.dock.show()
-        pass
+        if self.show_panel_action.isChecked():
+            self.dock.show()
+        else:
+            self.dock.hide()
+
+
+    def dockVisibilityChanged(self, visibility):
+        if self.inVisibilityChanged:
+            return
+        s = QSettings()
+        self.inVisibilityChanged = True
+        s.setValue(u"{0}/show_dock".format(PluginGlobals.instance().PLUGIN_TAG), "1" if visibility else "0")
+        self.show_panel_action.setChecked(visibility)
+        self.inVisibilityChanged = False
+
 
     def aboutMenuTriggered(self):
         """
@@ -204,7 +220,7 @@ class SimpleAccessPlugin:
             self.iface.messageBar().pushMessage('PyErreur : requete intPyErrogation parcellaire | PyErr:' + str(e), Qgis.Warning)
 
     def localisationCadastraleTriggered(self):
-        dialog = LocalisationCadastraleDialog(self.iface.mainWindow(), self.iface)
+        dialog = LocalisationCadastraleDialog(self.iface.mainWindow(), self.iface, self.ressources_tree)
         dialog.exec_()
 
     def rechercheAdresseTriggered(self):

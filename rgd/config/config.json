@@ -3,45 +3,678 @@
   "description": "",
   "type": "folder",
   "children": [
-   {
-       "title": "Carte Etat-Major",
-       "description": "Carte Etat-Major",
-       "type": "wmts_layer",
-       "requires_auth": true,
-       "params": {
-           "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
-           "format": "image/jpeg",
-           "name": "Carte Etat-Major",
-           "style": "default",
-           "srs": "EPSG:3857",
-           "tilematrixset_name": "Google"
-        }
-  },
-  {
-       "title": "Ortho5cm",
-       "description": "Ortho5cm",
-       "type": "wmts_layer",
-       "requires_auth": true,
-       "params": {
-           "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
-           "format": "image/jpeg",
-           "name": "Ortho5cm",
-           "style": "default",
-           "srs": "EPSG:3857",
-           "tilematrixset_name": "Google"
-        }
-  },
-  {
-       "title": "WFS test",
-       "description": "WFS test",
-       "type": "wfs_feature_type",
-       "params": {
-           "url": "https://inspire.brandenburg.de/services/ps_schutzg_wfs",
-           "name": "ps:ProtectedSite",
-           "srs": "EPSG:25833",
-           "version": "2.0.0",
-           "geometryTypeFilter": "MultiSurface"
-        }
-  }
+		{
+			"title": "Photos aériennes",
+			"description": "Orthophotographies disponibles sur Savoie et Haute-Savoie",
+			"type": "folder",
+			"children": [
+				   {
+					   "title": "Dernier millésime Orthophoto 20cm",
+					   "description": "Dep74:2023 - Dep73:2022",
+					   "type": "wmts_layer",
+					   "requires_auth": true,
+					   "params": {
+						   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+						   "format": "image/jpeg",
+						   "name": "ORTHOPHOTO",
+						   "style": "default",
+						   "srs": "EPSG:2154",
+						   "tilematrixset_name": "LAMB93"
+						}
+
+				  },
+					{
+						   "title": "Orthophoto ombrée",
+						   "description": "Elaboré à partir du MNT du Lidar HD",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "Ortho_Relief",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					{
+						"title": "Historique Savoie",
+						"description": "Orthophotographies  sur la Savoie",
+						"type": "folder",
+						"children": [
+								   {
+									   "title": "Ortho73 - 20cm - 2019",
+									   "description": "Ortho73 - 20cm - 2019",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho73_2019",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho73 - 20cm - 2016",
+									   "description": "Ortho73 - 20cm - 2016",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho73_2016",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho73 - 20cm - 2013",
+									   "description": "Ortho73 - 20cm - 2013",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho73_2013",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho73 - 20cm - 2009",
+									   "description": "Ortho73 - 20cm - 2009",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho73_2009",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho73 - 50cm - 2006",
+									   "description": "Ortho73 - 20cm - 2006",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho73_2006",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho73 - 20cm - 2001",
+									   "description": "Ortho73 - 20cm - 2001",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho73_2001",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho73 - 1952",
+									   "description": "Ortho73 -  1952",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho_1952",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  }
+						]
+					},
+					{
+						"title": "Historique Haute-Savoie",
+						"description": "Orthophotographies sur la Haute-Savoie",
+						"type": "folder",
+						"children": [
+								   {
+									   "title": "Ortho74 - 20cm - 2020",
+									   "description": "Ortho74 - 20cm - 2020",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_2020",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 20cm - 2015",
+									   "description": "Ortho74 - 20cm - 2015",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_2015",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 20cm - 2012",
+									   "description": "Ortho74 - 20cm - 2012",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_2012",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 20cm - 2008",
+									   "description": "Ortho74 - 20cm - 2008",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_2008",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 50cm - 2004",
+									   "description": "Ortho74 - 50cm - 2004",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_2004",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 50cm - 2001",
+									   "description": "Ortho74 - 50cm - 2001",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_2001",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 50cm - 1998",
+									   "description": "Ortho74 - 50cm - 1998",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho74_1998",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  },
+								   {
+									   "title": "Ortho74 - 1952",
+									   "description": "Ortho74 -  1952",
+									   "type": "wmts_layer",
+									   "requires_auth": true,
+									   "params": {
+										   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+										   "format": "image/jpeg",
+										   "name": "Ortho_1952",
+										   "style": "default",
+										   "srs": "EPSG:2154",
+										   "tilematrixset_name": "LAMB93"
+										}
+								  }
+
+						]
+					}
+			]
+		},
+		{
+			"title": "Plan cadastral",
+			"description": "Plan cadastral",
+			"type": "folder",
+			"children": [
+				   {
+					   "title": "Plan cadastral",
+					   "description": "Version à jour du plan cadastral",
+					   "type": "wmts_layer",
+					   "requires_auth": true,
+					   "params": {
+						   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+						   "format": "image/png",
+						   "name": "Plan cadastral",
+						   "style": "default",
+						   "srs": "EPSG:2154",
+						   "tilematrixset_name": "LAMB93"
+						}
+				  }
+			]
+		},
+		{
+			"title": "Fonds de plan IGN",
+			"description": "Fonds de plan produits par l'IGN",
+			"type": "folder",
+			"children": [
+					   {
+						   "title": "Carte topographique",
+						   "description": "SCAN25",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "Carte topographique",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Plan IGN v2 couleur",
+						   "description": "Plan IGN v2 couleur",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "Plan IGN v2",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Plan IGN v2 couleur estompé",
+						   "description": "Plan IGN v2 couleur estompé",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "Plan IGN v2 estompe",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Plan IGN v2 niveaux de gris",
+						   "description": "Plan IGN v2 niveaux de gris",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "Plan IGN v2 grey",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Carte Etat-Major",
+						   "description": "Carte Etat-Major",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "Carte Etat-Major",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					  {
+						   "title": "Plan IGN tuiles vectorielles",
+						   "description": "Plan IGN tuiles vectorielles",
+						   "type": "xyzvectortiles_layer",
+						   "requires_auth": false,
+						   "params": {
+							   "url": "https://data.geopf.fr/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf",
+							   "DISABLED_styleUrl": "https://example.com",
+							   "zmin": 0,
+							   "zmax": 14,
+							   "srs": "EPSG:3857"
+							}
+						}
+			]
+		},
+		{
+			"title": "Urbanisme",
+			"description": "Documents d'urbanisme en vigueur",
+			"type": "folder",
+			"children": [
+					   {
+						   "title": "Documents d'urbanisme",
+						   "description": "Documents d'urbanisme",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "Pos_plu",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  }
+			]
+		},
+		{
+			"title": "Relief",
+			"description": "Données altimétriques",
+			"type": "folder",
+			"children": [
+					   {
+						   "title": "Ombrage sans sursol HD",
+						   "description": "Elaboré à partir du MNT du Lidar HD",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "Relief_HD",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Ombrage avec sursol HD",
+						   "description": "Elaboré à partir du MNT du Lidar HD",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "Relief_et_sursol_HD",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Courbes de niveaux HD",
+						   "description": "Elaboré à partir du MNT du Lidar HD",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "Courbes_de_niveau_HD",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "Cotations altimétriques",
+						   "description": "Elaboré à partir du MNT du Lidar HD",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "MNT_cotations",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  }
+			]
+		},
+		{
+			"title": "Images satellites",
+			"description": "Images satellites",
+			"type": "folder",
+			"children": [
+					   {
+						   "title": "Pleiades 2023 - 50cm",
+						   "description": "Pleiades 2023 - 50cm",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "Pleiades_2023",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+					  },
+					   {
+						   "title": "SPOT 2023 - 5m",
+						   "description": "SPOT 2023 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2023",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+								}
+						},
+						{
+						   "title": "SPOT 2022 - 5m",
+						   "description": "SPOT 2022 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2022",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						},
+					   {
+						   "title": "SPOT 2021 - 5m",
+						   "description": "SPOT 2021 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2021",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+								}
+						},
+					   {
+						   "title": "SPOT 2020 - 5m",
+						   "description": "SPOT 2020 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2020",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+								}
+						},
+					   {
+						   "title": "SPOT 2019 - 5m",
+						   "description": "SPOT 2019 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2019",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						},
+					   {
+						   "title": "SPOT 2018 - 5m",
+						   "description": "SPOT 2018 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2018",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						},
+					   {
+						   "title": "SPOT 2017 - 5m",
+						   "description": "SPOT 2017 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2017",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						},
+					   {
+						   "title": "SPOT 2016 - 5m",
+						   "description": "SPOT 2016 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2016",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						},
+					   {
+						   "title": "SPOT 2015 - 5m",
+						   "description": "SPOT 2015 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2015",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						},
+					   {
+						   "title": "SPOT 2014 - 5m",
+						   "description": "SPOT 2014 - 5m",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/jpeg",
+							   "name": "SPOT2014",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						}
+			]
+		},
+		{
+			"title": "PCRS",
+			"description": "Plan de Corps de Rue",
+			"type": "folder",
+			"children": [
+				  {
+					   "title": "Ortho5cm Haute-Savoie",
+					   "description": "Ortho5cm Haute-Savoie",
+					   "type": "wmts_layer",
+					   "requires_auth": true,
+					   "params": {
+						   "url": "https://data.rgd.fr/PCRS_74/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+						   "format": "image/jpeg",
+						   "name": "Ortho5cm",
+						   "style": "default",
+						   "srs": "EPSG:2154",
+						   "tilematrixset_name": "LAMB93"
+						}
+				  },
+				  {
+					   "title": "Ortho5cm Savoie",
+					   "description": "Ortho5cm Savoie",
+					   "type": "wmts_layer",
+					   "requires_auth": true,
+					   "params": {
+						   "url": "https://data.rgd.fr/PCRS_73/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+						   "format": "image/jpeg",
+						   "name": "Ortho5cm_PCRS73",
+						   "style": "default",
+						   "srs": "EPSG:2154",
+						   "tilematrixset_name": "LAMB93"
+						}
+				  }
+			]
+		},
+		{
+			"title": "Limites administratives",
+			"description": "Limites administratives",
+			"type": "folder",
+			"children": [
+					   {
+						   "title": "Limites des communes",
+						   "description": "Limites communales - base BD Topo",
+						   "type": "wmts_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+							   "format": "image/png",
+							   "name": "Limites administratives",
+							   "style": "default",
+							   "srs": "EPSG:2154",
+							   "tilematrixset_name": "LAMB93"
+							}
+						}
+			]
+		}
   ]
 }

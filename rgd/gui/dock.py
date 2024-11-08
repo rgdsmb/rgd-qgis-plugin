@@ -28,7 +28,7 @@ class DockWidget(QDockWidget):
 
     def init_gui(self):
         """ """
-        self.setWindowTitle(PluginGlobals.instance().PLUGIN_TAG)
+        self.setWindowTitle(PluginGlobals.instance().PLUGIN_NAME)
         self.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
 
         # Search bar.
