@@ -282,7 +282,20 @@
 						   "srs": "EPSG:2154",
 						   "tilematrixset_name": "LAMB93"
 						}
-				  }
+				  },
+					  {
+						   "title": "Plan cadastral (tuiles vectorielles)",
+						   "description": "Plan IGN tuiles vectorielles",
+						   "type": "xyzvectortiles_layer",
+						   "requires_auth": true,
+						   "params": {
+							   "url": "https://data.rgd.fr/mvt/mvt_cadastre@PM/{z}/{x}/{y}.pbf",
+							   "styleUrl": "https://ts1.rgd.fr/rgd.json",
+							   "zmin": 0,
+							   "zmax": 22,
+							   "srs": "EPSG:3857"
+							}
+						}
 			]
 		},
 		{
@@ -346,6 +359,19 @@
 							   "tilematrixset_name": "LAMB93"
 							}
 					  },
+					  {
+						   "title": "BD Topo (tuiles vectorielles externes)",
+						   "description": "Plan IGN tuiles vectorielles",
+						   "type": "xyzvectortiles_layer",
+						   "requires_auth": false,
+						   "params": {
+							   "url": "https://data.geopf.fr/tms/1.0.0/BDTOPO/{z}/{x}/{y}.pbf",
+							   "styleUrl": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/BDTOPO/classique.json",
+							   "zmin": 0,
+							   "zmax": 22,
+							   "srs": "EPSG:3857"
+							}
+						},
 					   {
 						   "title": "Carte Etat-Major",
 						   "description": "Carte Etat-Major",
@@ -359,20 +385,7 @@
 							   "srs": "EPSG:2154",
 							   "tilematrixset_name": "LAMB93"
 							}
-					  },
-					  {
-						   "title": "Plan IGN tuiles vectorielles",
-						   "description": "Plan IGN tuiles vectorielles",
-						   "type": "xyzvectortiles_layer",
-						   "requires_auth": false,
-						   "params": {
-							   "url": "https://data.geopf.fr/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf",
-							   "DISABLED_styleUrl": "https://example.com",
-							   "zmin": 0,
-							   "zmax": 14,
-							   "srs": "EPSG:3857"
-							}
-						}
+					  }
 			]
 		},
 		{

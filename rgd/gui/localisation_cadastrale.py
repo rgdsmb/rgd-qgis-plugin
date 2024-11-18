@@ -16,12 +16,10 @@ from qgis.core import (
     QgsProject,
 )
 
-from qgis.core import QgsProject, QgsVectorLayer, QgsFeature, QgsPointXY, QgsSymbol, QgsSimpleMarkerSymbolLayer
-from qgis.PyQt.QtGui import QColor
-
 from rgd.utils.maptools import reproject_point, center_on_xy
 from rgd.utils.network_utils import get_json_response
 from rgd.utils.plugin_globals import PluginGlobals
+from rgd.utils.temp_map_layer_with_red_cross import TempMapLayerWithRedCross
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -125,8 +123,8 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
         QApplication.restoreOverrideCursor()
 
         if self.temp_layer:
-            QgsProject.instance().removeMapLayer(self.temp_layer)
-            self.plugin_iface.mapCanvas().refresh()
+            self.temp_layer.close()
+            self.temp_layer = None
 
     def closeEvent(self, event):
         self.cleanup()
@@ -366,32 +364,5 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
             center_on_xy(self.plugin_iface, x, y, zoomScale)
 
         if self.temp_layer is None:
-
-            self.temp_layer = QgsVectorLayer(f"Point?crs=EPSG:{srid}", "Résultat de la localisation cadastrale", "memory")
-
-            # Create a red cross marker symbol
-            symbol = QgsSymbol.defaultSymbol(self.temp_layer.geometryType())
-            symbol_layer = QgsSimpleMarkerSymbolLayer()
-            symbol_layer.setShape(QgsSimpleMarkerSymbolLayer.Cross)
-            symbol_layer.setSize(5)
-            symbol_layer.setStrokeWidth(2) 
-            symbol_layer.setColor(QColor("red"))
-
-            symbol.changeSymbolLayer(0, symbol_layer)
-
-            self.temp_layer.renderer().setSymbol(symbol)
-
-            # Add the layer to the project
-            QgsProject.instance().addMapLayer(self.temp_layer)
-        else:
-            self.temp_layer.startEditing()
-            feature_ids = [feature.id() for feature in self.temp_layer.getFeatures()]
-            self.temp_layer.deleteFeatures(feature_ids)
-            self.temp_layer.commitChanges()
-
-        # Create a feature with the given coordinates
-        point_feature = QgsFeature()
-        point_feature.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(x_ori, y_ori)))
-        layer_provider = self.temp_layer.dataProvider()
-        layer_provider.addFeature(point_feature)
-        self.temp_layer.updateExtents()
+            self.temp_layer = TempMapLayerWithRedCross(self.plugin_iface, "Résultat de la localisation cadastrale", srid)
+        self.temp_layer.set_marker(x_ori, y_ori)

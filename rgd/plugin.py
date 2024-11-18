@@ -214,7 +214,7 @@ class SimpleAccessPlugin:
             canvas_crs_auth_id = canvas_crs.authid()
 
             x, y = reproject_point(x, y, canvas_crs_auth_id, "EPSG:2154")
-            url = f"https://majicad.rgd74.fr/cadastre/index.phtml?operation=GetFicheparc&type=complet&format=html&intersect=SRID%3D2154%3BPOINT%28{x}%20{y}%29"
+            url = f"https://majicad.rgd74.fr/cadastre/index.phtml?operation=GetFicheparc&type=complet&format=html&geom=SRID%3D2154%3BPOINT%28{x}%20{y}%29"
             QDesktopServices.openUrl(QUrl(url))
         except Exception as e:
             self.iface.messageBar().pushMessage('PyErreur : requete intPyErrogation parcellaire | PyErr:' + str(e), Qgis.Warning)
