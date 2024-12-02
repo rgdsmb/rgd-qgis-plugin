@@ -13,17 +13,17 @@ from rgd.utils.plugin_globals import PluginGlobals
 from rgd.utils.plugin_icons import PluginIcons
 
 def AuthMissing():
-    box = QMessageBox(QMessageBox.Warning,
+    box = QMessageBox(QMessageBox.Icon.Warning,
                       "Authentification absente",
                       "Cette couche nécessite des éléments d'authentification. Merci de les renseigner dans la configuration du greffon")
-    box.exec_()
+    box.exec()
     return None
 
 def InvalidLayer():
-    box = QMessageBox(QMessageBox.Warning,
+    box = QMessageBox(QMessageBox.Icon.Warning,
                       "Couche invalide",
                       "Cette couche n'a pas être ajoutée. Vous ne disposez peut être pas des droits permettant d'y accéder.")
-    box.exec_()
+    box.exec()
     return None
 
 

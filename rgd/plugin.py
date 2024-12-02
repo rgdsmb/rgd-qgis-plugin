@@ -111,7 +111,7 @@ class SimpleAccessPlugin:
         self.dock.set_tree_content(self.ressources_tree)
         self.inVisibilityChanged = False
         self.dock.visibilityChanged.connect(self.dockVisibilityChanged)
-        self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
+        self.iface.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
 
         s = QSettings()
         if s.value("{0}/show_dock".format(PluginGlobals.instance().PLUGIN_TAG), "1") == "1":
@@ -194,14 +194,14 @@ class SimpleAccessPlugin:
         Shows the About box
         """
         dialog = AboutBox(self.iface.mainWindow())
-        dialog.exec_()
+        dialog.exec()
 
     def paramMenuTriggered(self):
         """
         Shows the Param box
         """
         dialog = ParamBox(self.iface.mainWindow(), self.dock)
-        dialog.exec_()
+        dialog.exec()
 
     def interrogationParcellaireTriggered(self):
         self.canvas.setMapTool(self.interrogTool)
@@ -221,11 +221,11 @@ class SimpleAccessPlugin:
 
     def localisationCadastraleTriggered(self):
         dialog = LocalisationCadastraleDialog(self.iface.mainWindow(), self.iface, self.ressources_tree)
-        dialog.exec_()
+        dialog.exec()
 
     def rechercheAdresseTriggered(self):
         dialog = RechercheAdresseDialog(self.iface.mainWindow(), self.iface)
-        dialog.exec_()
+        dialog.exec()
 
     def unload(self):
         """

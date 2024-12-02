@@ -4,6 +4,7 @@ description=Plugin pour QGIS fournissant un accès simple aux flux de données g
 version=0.1
 qgisMinimumVersion=3.36
 qgisMaximumVersion=3.99
+supportsQt6=yes
 author=RGD, Spatialys
 email=info@rgd.fr
 icon=images/rgd.png

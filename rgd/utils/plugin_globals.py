@@ -216,9 +216,9 @@ class PluginGlobals:
         if self.FACTORY_AUTH_CONFIG_ID not in auth_mgr.availableAuthMethodConfigs():
 
             if not auth_mgr.masterPasswordIsSet():
-                QMessageBox(QMessageBox.Information,
+                QMessageBox(QMessageBox.Icon.Information,
                             "Initialisation de l'extension RGD Savoie Mont-Blanc",
-                            "L'extension RGD Savoie Mont-Blanc va initialiser sa configuration pour l'authentification OAuth2 (SSO). Il va vous être demandé de saisir le mot de passe principal protégeant la base de données QGIS de configurations d'authentification (Wallet/Keyring)").exec_()
+                            "L'extension RGD Savoie Mont-Blanc va initialiser sa configuration pour l'authentification OAuth2 (SSO). Il va vous être demandé de saisir le mot de passe principal protégeant la base de données QGIS de configurations d'authentification (Wallet/Keyring)").exec()
 
             config = {
                 "accessMethod":0,
@@ -247,6 +247,6 @@ class PluginGlobals:
             if auth_mgr.storeAuthenticationConfig(auth_cfg):
                 self.set_qgis_settings_value("auth_config_id", self.FACTORY_AUTH_CONFIG_ID)
             if self.FACTORY_AUTH_CONFIG_ID not in auth_mgr.availableAuthMethodConfigs():
-                QMessageBox(QMessageBox.Warning,
+                QMessageBox(QMessageBox.Icon.Warning,
                         "Initialisation de l'extension RGD Savoie Mont-Blanc",
-                        "Erreur lors de la tentative d'enregistrement de la configuration pour l'authentification OAuth2 (SSO)").exec_()
+                        "Erreur lors de la tentative d'enregistrement de la configuration pour l'authentification OAuth2 (SSO)").exec()

@@ -137,9 +137,9 @@ class LocalisationCadastraleDialog(QDialog, FORM_CLASS):
         if response is None:
             return False
         if "data" not in response:
-            box = QMessageBox(QMessageBox.Warning, "Erreur lors de la requête",
+            box = QMessageBox(QMessageBox.Icon.Warning, "Erreur lors de la requête",
                               "La réponse du serveur n'est pas au format attendu: " + json.dumps(response))
-            box.exec_()
+            box.exec()
             return False
         return True
 
