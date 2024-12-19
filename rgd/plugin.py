@@ -75,26 +75,27 @@ class SimpleAccessPlugin:
         self.interrogTool = QgsMapToolEmitPoint(self.canvas)
         self.interrogTool.canvasClicked.connect(self.display_point)
 
+        icon_show_panel = os.path.join(PluginGlobals.instance().images_dir_path, "volet_lateral_v1.png")
         self.show_panel_action = QAction(
-            QgsApplication.getThemeIcon("/mDockify.svg"),
+            QIcon(icon_show_panel),
             u"Afficher le panneau latéral", self.iface.mainWindow()
         )
         self.show_panel_action.setCheckable(True)
         self.show_panel_action.triggered.connect(self.showPanelMenuTriggered)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_interr.png")
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "parcelle_info.png")
         self.interrogation_parcellaire_action = QAction(
             QIcon(icon_path), u"Interrogation parcellaire…", self.iface.mainWindow()
         )
         self.interrogation_parcellaire_action.triggered.connect(self.interrogationParcellaireTriggered)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "recherche_parcelle.png")
         self.localisation_cadastrale_action = QAction(
             QIcon(icon_path), u"Localisation cadastrale…", self.iface.mainWindow()
         )
         self.localisation_cadastrale_action.triggered.connect(self.localisationCadastraleTriggered)
 
-        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "icon_loca.png")
+        icon_path = os.path.join(PluginGlobals.instance().images_dir_path, "recherche_adresse.png")
         self.recherche_adresse_action = QAction(
             QIcon(icon_path), u"Recherche par adresse…", self.iface.mainWindow()
         )
