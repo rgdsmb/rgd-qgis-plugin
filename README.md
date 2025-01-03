@@ -45,11 +45,6 @@ Pour ajouter une couche sur la carte courante de QGIS vous pouvez utiliser l'une
 * clic-droit sur le nœud en question et menu contextuel "Ajouter à la carte"
 * glisser-déposer du nœud sur la carte de QGIS
 
-Il est possible de faire des recherches dans la liste des couches avec la barre
-de recherche placée au dessus de l'arborescence.
-
-Plus de détails sur une couche sont affichés en laissant la souris une seconde
-sur le titre d'une couche.
 
 Si vous avez fermé le panneau RGD et que vous voulez l'afficher à nouveau, 2 possibilités :
 
