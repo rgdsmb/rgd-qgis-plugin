@@ -46,11 +46,6 @@ Pour ajouter une couche sur la carte courante de QGIS vous pouvez utiliser l'une
 * glisser-déposer du nœud sur la carte de QGIS
 
 
-Si vous avez fermé le panneau RGD et que vous voulez l'afficher à nouveau, 2 possibilités :
-
-* menu Extensions, RGD, Afficher le panneau latéral
-* menu Vue, Panneaux, cocher RGD
-
 ### Interrogation parcellaire cadastrale 
 
 * Via le menu de QGIS : Extension > RGD > Interrogation parcellaire
