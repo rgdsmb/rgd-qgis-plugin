@@ -1,6 +1,6 @@
 # qgis-plugin
 
-Plugin QGIS est destiné aux <ins> collectivités et services publics des départements de Savoie et Haute-Savoie  adhérents du GIP RGD Savoie Mont Blanc </ins>. Un login de connexion est nécessaire.
+Ce plugin QGIS est destiné aux <ins> collectivités et services publics des départements de Savoie et Haute-Savoie  adhérents du GIP RGD Savoie Mont Blanc </ins>. Un login de connexion est nécessaire.
 
 Ce plugin fourni  :
 
