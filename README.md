@@ -45,6 +45,19 @@ Pour ajouter une couche sur la carte courante de QGIS vous pouvez utiliser l'une
 * clic-droit sur le nœud en question et menu contextuel "Ajouter à la carte"
 * glisser-déposer du nœud sur la carte de QGIS
 
+Une fenêtre d'authnetification apparaît :
+
+![image](https://github.com/user-attachments/assets/978b6cdb-dc34-4fbc-b293-b956f1f381bf)
+
+Saisir vos identifiants RGD.CONNECT
+
+Le message ci-dessous apparaît à l'issue du processus d'authnetification:
+
+![image](https://github.com/user-attachments/assets/246271f6-78c8-438b-82c2-6a1874d6f175)
+
+Vous pouvez alors retourner sur la fenêtre de QGIS et commencer à utiliser le plugin
+
+
 
 ### Interrogation parcellaire cadastrale 
 
