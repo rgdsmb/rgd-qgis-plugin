@@ -83,7 +83,7 @@ d'intégration.
 ## Auteurs originaux
 
 Auteurs:
-* Even ROUAULT (SPATIALYS)
+* Even Rouault (SPATIALYS)
 * Landry Breuil (CRAIG)
 * Benjamin Chartier (Région Picardie, Région Hauts-de-France, Neogeo Technologies puis en tant qu'indépendant)
 * Julie Pierson (UMR LETG)
