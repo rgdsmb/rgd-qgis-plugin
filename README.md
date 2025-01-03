@@ -1,6 +1,6 @@
 # qgis-plugin
 
-Ce plugin QGIS est destiné aux <ins> collectivités et services publics des départements de Savoie et Haute-Savoie  adhérents du GIP RGD Savoie Mont Blanc </ins>. Un login de connexion est nécessaire.
+Ce plugin QGIS est destiné aux <ins> collectivités et services publics des départements de Savoie et Haute-Savoie  adhérents du GIP RGD Savoie Mont Blanc </ins>. Un login de connexion est nécessaire. Pour une demande de login adresser une demande à info@rgd.fr
 
 Ce plugin fourni  :
 
@@ -8,7 +8,7 @@ Ce plugin fourni  :
 + des fonctionnalités de recherche de références cadastrales ou adresses postales
 + une fonctionnalité d'édition de rapports cadastraux (fiche descriptive de parcelle, relevé de propriété).
 
-Pour une demande de login adresser une demande à info@rgd.fr
+
 
 
 Code source du projet: https://github.com/rgdsmb/rgd-qgis-plugin
