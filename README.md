@@ -2,9 +2,9 @@
 
 Ce plugin QGIS est destiné aux <ins> collectivités et services publics des départements de Savoie et Haute-Savoie  adhérents du GIP RGD Savoie Mont Blanc </ins>. Un login de connexion est nécessaire. Pour une demande de login adresser une demande à info@rgd.fr
 
-Ce plugin fourni  :
+Ce plugin fournit  :
 
-+ un accès simple aux flux de données géographiques utiles en Savoie et Haute-Savoie : plan cadastral, photographies aériennes, données d'urbanismes, cartes topographiques, données alimétriques, PCRS…
++ un accès simple aux flux de données géographiques utiles en Savoie et Haute-Savoie : plan cadastral, photographies aériennes, données d'urbanisme, cartes topographiques, données alimétriques, PCRS…
 + des fonctionnalités de recherche de références cadastrales ou adresses postales
 + une fonctionnalité d'édition de rapports cadastraux (fiche descriptive de parcelle, relevé de propriété).
 
