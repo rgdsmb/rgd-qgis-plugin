@@ -30,7 +30,7 @@ class AboutBox(QDialog):
         mainLayout.addWidget(self.logo)
 
         title = u"À propos de l'extension " + PluginGlobals.instance().PLUGIN_TAG + "…"
-        description1 = """Plugin QGIS fournissant un accès simple aux flux de données géographiques réservés aux abonnés des géoservices du  <a href="https://www.rgd.fr//">GIP RGD Savoie Mont Blanc</a> sur les départements de Savoie et de Haute-Savoie (plan cadastral, photographies aériennes, données d'urbanismes, cartes topographiques, données alimétriques, PCRS…). Fonctionnalités de recherche et consultation de données cadastrales. Recherche d'adresse postale. Veuillez noter que les services accessibles par le plugin nécessitent d'avoir un accès autorisé accordé par la RGD Savoie Mont Blanc sur le territoire de compétence de chaque utilisateur (cf. accès à la documentation littérale cadastrale). Abonnés : contactez notre support pour toute création de compte. Version {}<br>""".format(
+        description1 = """Plugin QGIS réservés aux abonnés des géoservices du  <a href="https://www.rgd.fr//">GIP RGD Savoie Mont Blanc</a> sur les départements de Savoie et de Haute-Savoie  Les services accessibles par le plugin nécessitent d'avoir un accès autorisé accordé par la RGD Savoie Mont Blanc sur le territoire de compétence de chaque utilisateur (cf. accès à la documentation littérale cadastrale).<br> Abonnés : contactez notre support pour toute création de compte. Version {}<br>""".format(
             PluginGlobals.instance().PLUGIN_VERSION
         )
         description2 = """Plus d'informations à l'adresse suivante :<br><a href='{0}'>{0}</a><br>""".format(
