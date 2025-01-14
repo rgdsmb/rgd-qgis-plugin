@@ -51,6 +51,8 @@ Une fenêtre d'authnetification apparaît :
 
 Saisir vos identifiants RGD.CONNECT
 
+Confirmer votre identité en siasissant le code de vérification reçu par mail
+
 Le message ci-dessous apparaît à l'issue du processus d'authnetification:
 
 ![image](https://github.com/user-attachments/assets/246271f6-78c8-438b-82c2-6a1874d6f175)
