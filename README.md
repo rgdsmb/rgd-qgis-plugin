@@ -18,7 +18,7 @@ Ce projet est un fork (projet dérivé) du plugin du CRAIG (lui-même fork d'aut
 * 
 ## Installation
 
-L'installation du plugin est réalisable directement depuis QGIS via le menu Extension > Installer/Gérer les extensions. Saisir "RGD Savoie Mont Blanc Plugin".
+L'installation du plugin est réalisable directement depuis QGIS via le menu Extension > Installer/Gérer les extensions. Saisir "RGD Savoie Mont Blanc Plugin" dans la barre de recherche.
 Attention : la version minimum requise est la version 3.40.2 
 
 ## Utilisation
