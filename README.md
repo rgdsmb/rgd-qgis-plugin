@@ -15,6 +15,11 @@ Code source du projet: https://github.com/rgdsmb/rgd-qgis-plugin
 
 Ce projet est un fork (projet dérivé) du plugin du CRAIG (lui-même fork d'autres projets..):
 * https://github.com/gipcraig/qgis-plugin
+* 
+## Installation
+
+L'installation du plugin est réalisable directement depuis QGIS via le menu Extension > Installer/Gérer les extensions. Saisir "RGD Savoie Mont Blanc Plugin".
+Attention : la version minimum requise est la version 3.40.2 
 
 ## Utilisation
 
