@@ -6,6 +6,8 @@ from qgis.PyQt.QtCore import QUrl, QUrlQuery
 from qgis.PyQt.QtWidgets import QMessageBox
 
 from qgis.core import (
+    QgsMapLayerFactory,
+    QgsMapLayerType,
     QgsProject,
 )
 
@@ -208,7 +210,7 @@ class WmsLayerTreeNode(FavoritesTreeNode):
             uri = "authcfg=" + authId + "&" + uri
 
         qgis_layer_uri_details = {
-            "type": "raster",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.RasterLayer),
             "provider": "wms",
             "title": self.title,
             "uri": uri,
@@ -296,7 +298,7 @@ class WmsStyleLayerTreeNode(FavoritesTreeNode):
             uri = "authcfg=" + authId + "&" + uri
 
         qgis_layer_uri_details = {
-            "type": "raster",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.RasterLayer),
             "provider": "wms",
             "title": self.title,
             "uri": uri,
@@ -392,7 +394,7 @@ class WmtsLayerTreeNode(FavoritesTreeNode):
             uri = "authcfg=" + authId + "&" + uri
 
         qgis_layer_uri_details = {
-            "type": "raster",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.RasterLayer),
             "provider": "wms",
             "title": self.title,
             "uri": uri,
@@ -488,7 +490,8 @@ class XYZVectorTilesLayerTreeNode(FavoritesTreeNode):
             uri = "authcfg=" + authId + "&" + uri
 
         qgis_layer_uri_details = {
-            "type": "vector_tiles",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.VectorTileLayer),
+            "provider": "xyzvectortiles",
             "title": self.title,
             "uri": uri,
         }
@@ -583,7 +586,7 @@ class WfsFeatureTypeTreeNode(FavoritesTreeNode):
             uri += " filter={}".format(self.filter)
 
         qgis_layer_uri_details = {
-            "type": "vector",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.VectorLayer),
             "provider": "WFS",
             "title": self.title,
             "uri": uri,
@@ -673,7 +676,7 @@ class WfsFeatureTypeFilterTreeNode(FavoritesTreeNode):
             uri += "&Filter={}".format(self.filter)
 
         qgis_layer_uri_details = {
-            "type": "vector",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.VectorLayer),
             "provider": "WFS",
             "title": self.title,
             "uri": uri,
@@ -747,7 +750,7 @@ class GdalWmsConfigFileTreeNode(FavoritesTreeNode):
         This dictionary is used by the run_add_to_map_action and layerMimeData methods.
         """
         qgis_layer_uri_details = {
-            "type": "raster",
+            "type": QgsMapLayerFactory.typeToString(QgsMapLayerType.RasterLayer),
             "provider": "gdal",
             "title": self.title,
             "uri": self.gdal_config_file_path.replace("\\", "/"),
