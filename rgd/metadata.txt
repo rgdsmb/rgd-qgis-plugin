@@ -1,7 +1,7 @@
 [general]
 name=RGD Savoie Mont Blanc Plugin
 description=Plugin QGIS fournissant un accès simple aux flux de données géographiques du GIP RGD Savoie Mont Blanc et d'autres ressources géographiques utiles aux acteurs publics de Savoie et de Haute-Savoie ( plan cadastral, photographies aériennes, données d'urbanismes, cartes topographiques, données alimétriques, PCRS…). Fonctionnalités de recherche et consultation de données cadsatrales. Recherche d'adresse postale. Veuillez noter qu'un certain nombre de services accessibles par le plugin nécessitent d'avoir un accès autorisé accordé par la RGD Savoie Mont Blanc. info@rgd.fr pour toute création de compte.
-version=0.1
+version=0.2
 qgisMinimumVersion=3.40.2
 qgisMaximumVersion=3.99
 supportsQt6=yes
