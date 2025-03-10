@@ -10,7 +10,7 @@
       "children": [
         {
           "title": "Dernier millésime Orthophoto 20cm",
-          "description": "Dep74:2023 - Dep73:2022",
+          "description": "Dep74:2023 - Dep73:2024",
           "type": "wmts_layer",
           "requires_auth": true,
           "params": {
@@ -41,6 +41,20 @@
           "description": "Orthophotographies  sur la Savoie",
           "type": "folder",
           "children": [
+            {
+              "title": "Ortho73 - 20cm - 2022",
+              "description": "Ortho73 - 20cm - 2022",
+              "type": "wmts_layer",
+              "requires_auth": true,
+              "params": {
+                "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+                "format": "image/jpeg",
+                "name": "Ortho73_2022",
+                "style": "default",
+                "srs": "EPSG:2154",
+                "tilematrixset_name": "LAMB93"
+              }
+            },
             {
               "title": "Ortho73 - 20cm - 2019",
               "description": "Ortho73 - 20cm - 2019",
@@ -120,6 +134,20 @@
                 "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
                 "format": "image/jpeg",
                 "name": "Ortho73_2001",
+                "style": "default",
+                "srs": "EPSG:2154",
+                "tilematrixset_name": "LAMB93"
+              }
+            },
+            {
+              "title": "Ortho73 - 1967",
+              "description": "Ortho73 -  1967",
+              "type": "wmts_layer",
+              "requires_auth": true,
+              "params": {
+                "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+                "format": "image/jpeg",
+                "name": "Ortho_1967",
                 "style": "default",
                 "srs": "EPSG:2154",
                 "tilematrixset_name": "LAMB93"
@@ -245,6 +273,20 @@
               }
             },
             {
+              "title": "Ortho74 - 1967",
+              "description": "Ortho74 -  1967",
+              "type": "wmts_layer",
+              "requires_auth": true,
+              "params": {
+                "url": "https://data.rgd.fr/ts/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
+                "format": "image/jpeg",
+                "name": "Ortho_1967",
+                "style": "default",
+                "srs": "EPSG:2154",
+                "tilematrixset_name": "LAMB93"
+              }
+            },
+            {
               "title": "Ortho74 - 1952",
               "description": "Ortho74 -  1952",
               "type": "wmts_layer",
@@ -283,12 +325,12 @@
         },
         {
           "title": "Plan cadastral (tuiles vectorielles)",
-          "description": "Plan IGN tuiles vectorielles",
+          "description": "Tuiles vectorielles du plan cadastral",
           "type": "xyzvectortiles_layer",
           "requires_auth": true,
           "params": {
             "url": "https://data.rgd.fr/mvt/mvt_cadastre@PM/{z}/{x}/{y}.pbf",
-            "styleUrl": "https://ts1.rgd.fr/rgd.json",
+            "styleUrl": "https://www.rgd.fr/qgisconfig/rgd.json",
             "zmin": 0,
             "zmax": 22,
             "srs": "EPSG:3857"
@@ -301,6 +343,19 @@
       "description": "Fonds de plan produits par l'IGN",
       "type": "folder",
       "children": [
+        {
+          "title": "Plan IGN pour superpostion",
+          "description": "Plan IGN (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://data.geopf.fr/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/PLAN.IGN/toponymes.json",
+            "zmin": 0,
+            "zmax": 22,
+            "srs": "EPSG:3857"
+          }
+        },
         {
           "title": "Carte topographique",
           "description": "SCAN25",
@@ -382,6 +437,91 @@
             "style": "default",
             "srs": "EPSG:2154",
             "tilematrixset_name": "LAMB93"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fonds OpenStreetMap vectoriels",
+      "description": "Fonds OpenStreetMap",
+      "type": "folder",
+      "children": [
+        {
+          "title": "Style Bright",
+          "description": "Style Bright (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://openmaptiles.data.gouv.fr/styles/osm-bright/style.json",
+            "zmin": 0,
+            "zmax": 14,
+            "srs": "EPSG:3857"
+          }
+        },
+        {
+          "title": "Style OSM OpenMapTiles",
+          "description": "Style OSM OpenMapTiles (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://openmaptiles.data.gouv.fr/styles/osm-openmaptiles/style.json",
+            "zmin": 0,
+            "zmax": 14,
+            "srs": "EPSG:3857"
+          }
+        },
+        {
+          "title": "Style Positron",
+          "description": "Style Positron (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://openmaptiles.data.gouv.fr/styles/positron/style.json",
+            "zmin": 0,
+            "zmax": 14,
+            "srs": "EPSG:3857"
+          }
+        },
+        {
+          "title": "Style Dark Matter",
+          "description": "Style Dark Matter (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://openmaptiles.data.gouv.fr/styles/dark-matter/style.json",
+            "zmin": 0,
+            "zmax": 14,
+            "srs": "EPSG:3857"
+          }
+        },
+        {
+          "title": "Style Toner",
+          "description": "Style Toner (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://openmaptiles.data.gouv.fr/styles/maptiler-toner/style.json",
+            "zmin": 0,
+            "zmax": 14,
+            "srs": "EPSG:3857"
+          }
+        },
+        {
+          "title": "Style Fiord Color",
+          "description": "Style Fiord Color (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://openmaptiles.data.gouv.fr/styles/fiord-color/style.json",
+            "zmin": 0,
+            "zmax": 14,
+            "srs": "EPSG:3857"
           }
         }
       ]
@@ -654,7 +794,7 @@
           "title": "Ortho5cm Savoie",
           "description": "Ortho5cm Savoie",
           "type": "wmts_layer",
-          "requires_auth": true,
+          "requires_auth": false,
           "params": {
             "url": "https://data.rgd.fr/PCRS_73/wmts?SERVICE=WMTS&REQUEST=GetCapabilities",
             "format": "image/jpeg",
@@ -683,6 +823,19 @@
             "style": "default",
             "srs": "EPSG:2154",
             "tilematrixset_name": "LAMB93"
+          }
+        },
+        {
+          "title": "Limites administratives vectorielles",
+          "description": "Limites administratives (tuiles vectorielles externes)",
+          "type": "xyzvectortiles_layer",
+          "requires_auth": false,
+          "params": {
+            "url": "https://data.geopf.fr/tms/1.0.0/ADMIN_EXPRESS/{z}/{x}/{y}.pbf",
+            "styleUrl": "https://data.geopf.fr/annexes/ressources/vectorTiles/styles/ADMIN_EXPRESS/adminexpress.json",
+            "zmin": 0,
+            "zmax": 20,
+            "srs": "EPSG:3857"
           }
         }
       ]
