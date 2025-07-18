@@ -51,7 +51,7 @@ class PluginGlobals:
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
     CONFIG_FILE_URLS_FACTORY = [
-        "https://www.rgd.fr/qgisconfig/config.json"
+        "https://geoportail.rgd.fr/qgisconfig/config.json"
     ]
     CONFIG_FILE_URLS = copy.deepcopy(CONFIG_FILE_URLS_FACTORY)
 
